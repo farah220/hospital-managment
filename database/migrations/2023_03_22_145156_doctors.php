@@ -14,19 +14,19 @@ return new class extends Migration
     public function up()
     {
 
-//        Schema::create('doctors', function (Blueprint $table) {
-//            $table->id();
-//            $table->string('name');
-//            $table->string('image');
-//            $table->decimal('price');
-//            $table->string('password');
-//            $table->string('email');
-//            $table->string('description');
-//            $table->unsignedBigInteger('department_id');
-//            $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
-//
-//            $table->timestamps();
-//        });
+        Schema::create('doctors', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->decimal('price');
+            $table->string('password');
+            $table->string('email')->unique();
+            $table->string('description');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
+
+            $table->timestamps();
+        });
     }
 
     /**
