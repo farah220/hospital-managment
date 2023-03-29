@@ -22,10 +22,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('report_id');
-            $table->unsignedBigInteger('prescription_id');
-            $table->foreign('report_id')->references('id')->on('reports')->cascadeOnDelete();
-            $table->foreign('prescription_id')->references('id')->on('prescription')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
