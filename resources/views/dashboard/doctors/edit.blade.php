@@ -9,12 +9,13 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                     <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Patients</h1>
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Doctors</h1>
                     <!-- end   :: Title -->
 
                     <!-- begin :: Separator -->
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
                     <!-- end   :: Separator -->
+
                 </div>
 
             </div>
@@ -22,32 +23,35 @@
         </div>
         <!-- end   :: Subheader -->
 
+
         @if( count($errors) > 0 )
             @include('dashboard.partials.error_alert')
         @endif
+
         <div class="card">
             <!-- begin :: Card body -->
             <div class="card-body p-0">
                 <!-- begin :: Form -->
-                <form action="{{ route('dashboard.patients.store') }}" class="form" method="post" enctype="multipart/form-data">
-                   @csrf
-                   <!-- begin :: Card header -->
+                <form action="{{ route('dashboard.doctors.update',$doctor->id) }}" class="form" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <!-- begin :: Card header -->
+
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Add Patient</h3>
+                        <h3 class="fw-bolder text-dark"> Edit Doctor</h3>
                     </div>
                     <!-- end   :: Card header -->
 
                     <!-- begin :: Inputs wrapper -->
-                    <div class="px-8 py-4"  >
+                    <div class="px-8 py-4">
+
 
                         <!-- begin :: Row -->
                         <div class="row mb-8">
-                            <!-- begin :: Column -->
                             <div class="col-md-12 text-center mb-5 fv-row">
 
                                 <!--begin::Image input-->
-                                <div class="image-input image-input-empty" data-kt-image-input="true"
-                                     style="background-image: url('{{ asset('dashboard-assets/media/avatars/blank.png') }}')">
+                                <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/doctors/' . $doctor['image']) }}')">
                                     <!--begin::Image preview wrapper-->
                                     <div class="image-input-wrapper w-125px h-125px"></div>
                                     <!--end::Image preview wrapper-->
@@ -77,15 +81,14 @@
                                 @enderror
 
                             </div>
-                            <!-- end   :: Column -->
 
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
                                 <label class="fs-5 fw-bold mb-2">Name</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name_inp" name="name" placeholder="example" value="{{ old('name') }}">
-                                    <label for="name_inp">Enter Name</label>
+                                    <input type="text" class="form-control"  name="name" value="{{ old('name') ?? $doctor->name }}" >
+
                                 </div>
                                 @error('name')
                                 <p class="text-danger">{{ $message }}</p>
@@ -100,8 +103,8 @@
 
                                 <label class="fs-5 fw-bold mb-2">Phone</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ old('phone') }}">
-                                    <label for="phone_inp">Phone</label>
+                                    <input type="text" class="form-control" name="phone"  value="{{ old('phone') ?? $doctor->phone }}" />
+
                                 </div>
                                 @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -122,28 +125,12 @@
 
                                 <label class="fs-5 fw-bold mb-2">Email</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ old('email') }}">
-                                    <label for="email_inp">Email</label>
+                                    <input type="text" class="form-control"  name="email" value="{{ old('email') ?? $doctor->email }}" >
+
                                 </div>
                                 @error('email')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-
-
-                            </div>
-                            <!-- end   :: Column -->
-                            <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
-
-                                <label class="fs-5 fw-bold mb-2">Emergency Contact</label>
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="email_inp" name="emergency_contact" placeholder="example" value="{{ old('emergency_contact') }}">
-                                    <label for="email_inp">Emergency Contact</label>
-                                </div>
-                                @error('emergency_contact')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-
 
                             </div>
                             <!-- end   :: Column -->
@@ -160,7 +147,7 @@
                         <!-- begin :: Submit btn -->
                         <button type="submit" class="btn btn-primary" >
 
-                            <span class="indicator-label">save</span>
+                            <span class="indicator-label">save Edit</span>
 
                         </button>
                         <!-- end   :: Submit btn -->
