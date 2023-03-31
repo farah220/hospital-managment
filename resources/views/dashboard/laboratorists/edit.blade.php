@@ -96,7 +96,21 @@
 
 
                             </div>
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Phone</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control"  name="phone" value="{{ old('name') ?? $laboratorist->phone }}" >
+
+                                </div>
+                                @error('phone')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
                             <!-- end   :: Column -->
+
 
 
 

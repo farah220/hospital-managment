@@ -35,9 +35,11 @@ class LaboratoristController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'email' => ['required' , 'unique:laboratorists'],
+            'phone' => ['required' , 'unique:laboratorists'],
             'image' => ['required' , 'unique:laboratorists'],
 
         ]);
+        $attributes['password']=$attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
 
 
@@ -53,6 +55,7 @@ class LaboratoristController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'email' => ['required' , 'unique:laboratorists,email,' . $laboratorist->id ,'email'],
+            'phone' => ['required' , 'unique:laboratorists,phone,' . $laboratorist->id ],
             'image' => [ 'nullable' ],
 
         ]);

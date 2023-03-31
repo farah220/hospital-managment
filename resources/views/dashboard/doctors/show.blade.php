@@ -89,31 +89,63 @@
 
                             </div>
                             <!-- end   :: Column -->
-
-                        </div>
-                        <!-- end   :: Row -->
-
-                        <!-- begin :: Row -->
-                        <div class="row mb-8">
-
-                            <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Email</label>
+                                <label class="fs-5 fw-bold mb-2">Phone</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control" value="{{ $doctor->email }}" >
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />
 
                                 </div>
-                                @error('email')
+                                @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
-                            <!-- end   :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Description</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->description }}" />
+
+                                </div>
+                                @error('description')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Department</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->department->name }}" />
+
+                                </div>
+                                @error('department')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Price</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->price }}" />
+
+                                </div>
+                                @error('price')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
 
                         </div>
                         <!-- end   :: Row -->
+
+
 
 
 

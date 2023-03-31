@@ -77,6 +77,9 @@
                         <td>
                             {{$laboratorist->image}}
                         </td>
+                        <td>
+                            {{$laboratorist->phone}}
+                        </td>
                         <!--end::Email=-->
                         <!--begin::Date=-->
                         <td>{{ $laboratorist->created_at }}</td>

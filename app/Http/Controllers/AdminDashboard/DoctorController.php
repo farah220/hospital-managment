@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class DoctorController extends Controller
 
     public function create()
     {
-        return view('dashboard.doctors.create');
+        $departments = Department::all();
+        return view('dashboard.doctors.create',compact('departments'));
     }
 
     public function show(Doctor $doctor)
@@ -36,12 +38,14 @@ class DoctorController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'email' => ['required' , 'unique:doctors'],
+            'phone' => ['required' , 'unique:doctors'],
+            'department_id' => ['required'],
             'price' => ['required' ],
             'description' => ['required'],
             'image' => ['required' , 'unique:doctors'],
             ]);
 
-//        $attributes['password'] = $attributes['phone'];
+        $attributes['password'] = $attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'doctors');
 
 
@@ -56,8 +60,9 @@ class DoctorController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'email' => ['required' , 'unique:doctor,email,' . $doctor->id ,'email'],
-            'price' => ['required'  . $doctor->price ,'price'],
-            'description' => ['required'. $doctor->description ,'description'],
+            'phone' => ['required' , 'unique:doctor,phone,' . $doctor->id ],
+            'price' => ['required'  ],
+            'description' => ['required'],
             'image' => [ 'nullable' ],
         ]);
         if ( request()->file('image') )

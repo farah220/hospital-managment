@@ -54,7 +54,10 @@
                     <th class="min-w-125px">Name</th>
                     <th class="min-w-125px">Email</th>
                     <th class="min-w-125px">phone</th>
+                    <th class="min-w-125px">Description</th>
+                    <th class="min-w-125px">Price</th>
                     <th class="min-w-125px">Image</th>
+                    <th class="min-w-125px">Department</th>
                     <th class="min-w-125px">Created At</th>
                     <th class="min-w-70px">Actions</th>
                 </tr>
@@ -75,13 +78,27 @@
                            {{$doctor->email}}
                         </td>
                         <td>
+                            {{$doctor->phone}}
+                        </td>
+                        <td>
+                            {{$doctor->description}}
+                        </td>
+                        <td>
+                            {{$doctor->price}}
+                        </td>
+                        <td>
                             {{$doctor->image}}
                         </td>
+                        <td>
+                            {{$doctor->department->name}}
+                        </td>
+
                         <!--end::Email=-->
                         <!--begin::Phone=-->
-                        <td>
-                         {{$doctor->phone}}
-                        </td>
+
+
+
+
                         <!--end::Phone=-->
                         <!--begin::Date=-->
                         <td>{{ $doctor->created_at }}</td>
