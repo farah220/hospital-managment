@@ -30,7 +30,8 @@ class DoctorController extends Controller
 
     public function edit(Doctor $doctor)
     {
-        return view('dashboard.doctors.edit',compact('doctor'));
+        $departments = Department::all();
+        return view('dashboard.doctors.edit',compact('doctor','departments'));
     }
 
     public function store(Request $request)
@@ -59,9 +60,9 @@ class DoctorController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required'],
-            'email' => ['required' , 'unique:doctor,email,' . $doctor->id ,'email'],
-            'phone' => ['required' , 'unique:doctor,phone,' . $doctor->id ],
-            'price' => ['required'  ],
+            'email' => ['required' , 'unique:doctors,email,' . $doctor->id ,'email'],
+            'phone' => ['required' , 'unique:doctors,phone,' . $doctor->id ],
+            'price' => ['required' ],
             'description' => ['required'],
             'image' => [ 'nullable' ],
         ]);

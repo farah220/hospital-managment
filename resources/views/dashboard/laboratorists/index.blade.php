@@ -75,10 +75,10 @@
                            {{$laboratorist->email}}
                         </td>
                         <td>
-                            {{$laboratorist->image}}
+                            {{$laboratorist->phone}}
                         </td>
                         <td>
-                            {{$laboratorist->phone}}
+                            {{$laboratorist->image}}
                         </td>
                         <!--end::Email=-->
                         <!--begin::Date=-->

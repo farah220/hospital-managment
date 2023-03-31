@@ -105,7 +105,7 @@
 
                             </div>
                             <div class="col-md-6 fv-row">
-
+                                <br>
                                 <label class="fs-5 fw-bold mb-2">Price</label>
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="price_inp" name="price" placeholder="example" value="{{ old('price') }}">
@@ -118,7 +118,7 @@
 
                             </div>
                             <div class="col-md-6 fv-row">
-
+                    <br>
                                 <label class="fs-5 fw-bold mb-2">Description</label>
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="description_inp" name="description" placeholder="example" value="{{ old('description') }}">
@@ -135,7 +135,7 @@
                             <!-- begin :: Column -->
 
                             <div class="col-md-6 fv-row" id="children-categories-container" >
-
+                            <br>
                                 <label class="fs-5 fw-bold mb-2">Department</label>
                                 <select class="form-select" data-control="select2"  name="department_id" multiple data-placeholder="Select an option">
                                     <option value=""> </option>
