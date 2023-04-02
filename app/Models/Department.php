@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function doctors()
     {
         $this->hasMany(Doctor::class);
