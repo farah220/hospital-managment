@@ -18,4 +18,6 @@ Route::get('/', function () {
 });
 Route::view('/admins/login','auth.admin_login')->name('admins.login-form');
 Route::post('/dashboard/login','App\Http\Controllers\Auth\AuthController@dashboardLogin')->name('admins.login');
+Route::view('/doctors/login','auth.doctor_login')->name('doctors.login-form');
+Route::post('/DoctorDashboard/login','App\Http\Controllers\Auth\AuthController@DoctorDashboardLogin')->name('doctors.login');
 

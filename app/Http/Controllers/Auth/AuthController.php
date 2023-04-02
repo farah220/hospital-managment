@@ -27,7 +27,7 @@ class AuthController extends Controller
 public function DoctorDashboardLogin(Request $request)
    {
        $credentials = $request->validate([
-           'email' => [ 'required', 'email' , 'max:255','exists:admins'],
+           'email' => [ 'required', 'email' , 'max:255','exists:doctors'],
            'password' => [ 'required', 'min:8'],
        ]);
 
