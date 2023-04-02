@@ -24,6 +24,20 @@ class AuthController extends Controller
 
        throw ValidationException::withMessages(['password' => 'invalid password']);
    }
+public function DoctorDashboardLogin(Request $request)
+   {
+       $credentials = $request->validate([
+           'email' => [ 'required', 'email' , 'max:255','exists:admins'],
+           'password' => [ 'required', 'min:8'],
+       ]);
+
+       if( auth('doctors')->attempt($credentials) )
+       {
+           return redirect('/dashboard');
+       }
+
+       throw ValidationException::withMessages(['password' => 'invalid password']);
+   }
 
     public function logout()
     {

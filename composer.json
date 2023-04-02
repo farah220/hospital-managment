@@ -28,7 +28,7 @@
         },
         "files": [
             "app/Http/Helpers/dashboard_functions.php"
-        ],
+        ]
     },
     "autoload-dev": {
         "psr-4": {
