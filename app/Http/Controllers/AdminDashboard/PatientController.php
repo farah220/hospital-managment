@@ -69,9 +69,9 @@ class PatientController extends Controller
 
     }
 
-    public function destroy(User $user)
+    public function destroy(User $patient)
     {
-        $user->delete();
+        $patient->delete();
         return redirect()->route('dashboard.patients.index')->with('success_message','The patient has been deleted successfully');
     }
 
