@@ -9,12 +9,15 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                     <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Patients</h1>
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Doctors</h1>
                     <!-- end   :: Title -->
 
                     <!-- begin :: Separator -->
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
                     <!-- end   :: Separator -->
+
+
+
                 </div>
 
             </div>
@@ -22,70 +25,46 @@
         </div>
         <!-- end   :: Subheader -->
 
-        @if( count($errors) > 0 )
-            @include('dashboard.partials.error_alert')
-        @endif
         <div class="card">
             <!-- begin :: Card body -->
             <div class="card-body p-0">
                 <!-- begin :: Form -->
-                <form action="{{ route('dashboard.patients.store') }}" class="form" method="post" enctype="multipart/form-data">
-                   @csrf
-                   <!-- begin :: Card header -->
+                <form action="{{ route('dashboard.doctors.show',$doctor) }}" class="form" method="post" enctype="multipart/form-data">
+                @csrf
+                <!-- begin :: Card header -->
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Add Patient</h3>
+                        <h3 class="fw-bolder text-dark"> Doctor Details</h3>
                     </div>
                     <!-- end   :: Card header -->
 
                     <!-- begin :: Inputs wrapper -->
-                    <div class="px-8 py-4"  >
+                    <div class="px-8 py-4">
+
 
                         <!-- begin :: Row -->
                         <div class="row mb-8">
-                            <!-- begin :: Column -->
                             <div class="col-md-12 text-center mb-5 fv-row">
 
                                 <!--begin::Image input-->
-                                <div class="image-input image-input-empty" data-kt-image-input="true"
-                                     style="background-image: url('{{ asset('dashboard-assets/media/avatars/blank.png') }}')">
+                                <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/doctors/' . $doctor['image']) }}')">
                                     <!--begin::Image preview wrapper-->
                                     <div class="image-input-wrapper w-125px h-125px"></div>
                                     <!--end::Image preview wrapper-->
-
-                                    <!--begin::Edit button-->
-                                    <label
-                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                                        data-kt-image-input-action="change"
-                                        data-bs-toggle="tooltip"
-                                        data-bs-dismiss="click"
-                                        title="Change avatar">
-                                        <i class="bi bi-pencil-fill fs-7"></i>
-
-                                        <!--begin::Inputs-->
-                                        <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
-                                        <input type="hidden" name="avatar_remove"/>
-                                        <!--end::Inputs-->
-                                    </label>
-                                    <!--end::Edit button-->
-
                                 </div>
                                 <!--end::Image input-->
-
 
                                 @error('image')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
                             </div>
-                            <!-- end   :: Column -->
-
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
                                 <label class="fs-5 fw-bold mb-2">Name</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name_inp" name="name" placeholder="example" value="{{ old('name') }}">
-                                    <label for="name_inp">Enter Name</label>
+                                    <input type="text" disabled class="form-control" value="{{ $doctor->name }}" >
+
                                 </div>
                                 @error('name')
                                 <p class="text-danger">{{ $message }}</p>
@@ -100,8 +79,8 @@
 
                                 <label class="fs-5 fw-bold mb-2">Phone</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ old('phone') }}">
-                                    <label for="phone_inp">Phone</label>
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />
+
                                 </div>
                                 @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -110,46 +89,65 @@
 
                             </div>
                             <!-- end   :: Column -->
-
-                        </div>
-                        <!-- end   :: Row -->
-
-                        <!-- begin :: Row -->
-                        <div class="row mb-8">
-
-                            <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Email</label>
+                                <label class="fs-5 fw-bold mb-2">Phone</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ old('email') }}">
-                                    <label for="email_inp">Email</label>
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />
+
                                 </div>
-                                @error('email')
+                                @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
-                            <!-- end   :: Column -->
-                            <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Emergency Contact</label>
+                                <label class="fs-5 fw-bold mb-2">Description</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email_inp" name="emergency_contact" placeholder="example" value="{{ old('emergency_contact') }}">
-                                    <label for="email_inp">Emergency Contact</label>
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->description }}" />
+
                                 </div>
-                                @error('emergency_contact')
+                                @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
-                            <!-- end   :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Department</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->department->name }}" />
+
+                                </div>
+                                @error('department')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Price</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $doctor->price }}" />
+
+                                </div>
+                                @error('price')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+
+                            </div>
 
                         </div>
                         <!-- end   :: Row -->
+
+
+
+
 
                     </div>
                     <!-- end   :: Inputs wrapper -->
@@ -158,11 +156,9 @@
                     <div class="form-footer p-8 text-end">
 
                         <!-- begin :: Submit btn -->
-                        <button type="submit" class="btn btn-primary" >
-
-                            <span class="indicator-label">save</span>
-
-                        </button>
+                        <a class="btn btn-primary" href="{{ route('dashboard.doctors.index') }}">
+                            Back
+                        </a>
                         <!-- end   :: Submit btn -->
 
                     </div>
