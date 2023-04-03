@@ -24,7 +24,7 @@ class AuthController extends Controller
 
        throw ValidationException::withMessages(['password' => 'invalid password']);
    }
-public function DoctorDashboardLogin(Request $request)
+   public function DoctorDashboardLogin(Request $request)
    {
        $credentials = $request->validate([
            'email' => [ 'required', 'email' , 'max:255','exists:doctors'],
@@ -33,7 +33,7 @@ public function DoctorDashboardLogin(Request $request)
 
        if( auth('doctors')->attempt($credentials) )
        {
-           return redirect('/dashboard');
+           return redirect('/doctor-dashboard');
        }
 
        throw ValidationException::withMessages(['password' => 'invalid password']);
@@ -44,5 +44,39 @@ public function DoctorDashboardLogin(Request $request)
         Auth::guard('web')->logout();
         return redirect()->route('web.index');
     }
+
+
+public function PharmacistDashboardLogin(Request $request)
+   {
+       $credentials = $request->validate([
+           'email' => [ 'required', 'email' , 'max:255','exists:pharmacists'],
+           'password' => [ 'required', 'min:8'],
+       ]);
+
+       if( auth('pharmacists')->attempt($credentials) )
+       {
+           return redirect('/');
+       }
+
+       throw ValidationException::withMessages(['password' => 'invalid password']);
+   }
+
+
+ public function LaboratoristDashboardLogin(Request $request)
+   {
+       $credentials = $request->validate([
+           'email' => [ 'required', 'email' , 'max:255','exists:laboratorists'],
+           'password' => [ 'required', 'min:8'],
+       ]);
+
+       if( auth('laboratorists')->attempt($credentials) )
+       {
+           return redirect('/');
+       }
+
+       throw ValidationException::withMessages(['password' => 'invalid password']);
+   }
+
+
 
 }

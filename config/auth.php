@@ -48,6 +48,14 @@ return [
             'driver' => 'session',
             'provider' => 'doctors'
         ],
+        'pharmacists' => [
+            'driver' => 'session',
+            'provider' => 'pharmacists'
+        ],
+        'laboratorists' => [
+            'driver' => 'session',
+            'provider' => 'laboratorists'
+        ],
 
     ],
 
@@ -81,6 +89,15 @@ return [
         'doctors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
+
+        ],
+        'pharmacists' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pharmacist::class,
+        ],
+        'laboratorists' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Laboratorist::class,
 
         ],
         // 'users' => [

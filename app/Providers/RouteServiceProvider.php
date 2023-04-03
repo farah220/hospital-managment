@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
         Route::namespace($this->NAMESPACE)->prefix('dashboard')->group(base_path('routes/dashboard.php'));
+        Route::namespace($this->NAMESPACE)->prefix('doctor-dashboard')->group(base_path('routes/doctor-dashboard.php'));
 
     }
 
