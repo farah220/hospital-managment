@@ -40,7 +40,7 @@
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                 <!--begin::Form-->
                 <form class="form w-100" novalidate="novalidate" method="POST" action="{{ route('laboratorists.login') }}">
-                   @csrf
+                    @csrf
                     <!--begin::Heading-->
                     <div class="text-center mb-10">
                         <!--begin::Title-->
@@ -57,7 +57,7 @@
                         <!--begin::Input-->
                         <input class="form-control form-control-lg form-control-solid" type="text" name="email" value="{{ old('email') }}" autocomplete="off" />
                         @error('email')
-                            <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                         <!--end::Input-->
 
@@ -75,7 +75,7 @@
                         <!--begin::Input-->
                         <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
                         @error('password')
-                             <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                         @enderror
                         <!--end::Input-->
                     </div>

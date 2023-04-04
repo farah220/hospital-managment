@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('prescription_id');
             $table->unsignedBigInteger('checks_id');
             $table->foreign('checks_id')->references('id')->on('checks')->cascadeOnDelete();
-            $table->foreign('prescription_id')->references('id')->on('prescriptions')->cascadeOnDelete();
+            $table->foreign('prescription_id')->references('id')->on('checks')->cascadeOnDelete();
             $table->timestamps();
         });
     }

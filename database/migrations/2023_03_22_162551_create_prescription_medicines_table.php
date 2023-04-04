@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->unsignedBigInteger('prescription_id');
             $table->unsignedBigInteger('medicine_id');
-            $table->foreign('prescription_id')->references('id')->on('prescriptions')->cascadeOnDelete();
+            $table->foreign('prescription_id')->references('id')->on('checks')->cascadeOnDelete();
             $table->foreign('medicine_id')->references('id')->on('medicines')->cascadeOnDelete();
             $table->timestamps();
         });
