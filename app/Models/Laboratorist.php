@@ -14,6 +14,6 @@ class Laboratorist extends Authenticatable
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Hash::make($value);
+       return $this->attributes['password'] = Hash::make($value);
     }
 }

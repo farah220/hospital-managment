@@ -57,20 +57,20 @@
                             </span>
             <div class="menu-sub menu-sub-accordion menu-active-bg">
                 <div class="menu-item">
-{{--                    <a class="menu-link" href="{{route('dashboard.admins.index')}}">--}}
-{{--                                        <span class="menu-bullet">--}}
-{{--                                            <span class="bullet bullet-dot"></span>--}}
-{{--                                        </span>--}}
-{{--                        <span class="menu-title">Admins List</span>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div class="menu-item">--}}
-{{--                    <a class="menu-link" href="{{route('dashboard.admins.create')}}">--}}
-{{--                                        <span class="menu-bullet">--}}
-{{--                                            <span class="bullet bullet-dot"></span>--}}
-{{--                                        </span>--}}
-{{--                        <span class="menu-title">New Admin</span>--}}
-{{--                    </a>--}}
+                    <a class="menu-link" href="{{route('dashboard.prescriptions.index')}}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                        <span class="menu-title">Prescriptions List</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{route('dashboard.prescriptions.create')}}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                        <span class="menu-title">New Prescription</span>
+                    </a>
                 </div>
 
             </div>
@@ -85,3 +85,4 @@
     </div>
 </div>
 <!--end::Aside-->
+</div>

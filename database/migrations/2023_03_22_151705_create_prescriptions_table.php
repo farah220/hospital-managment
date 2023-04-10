@@ -19,9 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('checks');
             $table->decimal('total_price');
-            $table->string('medicine');
+
 
             $table->timestamps();
         });

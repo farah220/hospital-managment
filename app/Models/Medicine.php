@@ -11,7 +11,7 @@ class Medicine extends Model
 
     public function prescriptions()
     {
-        $this->belongsToMany(Prescription::class,'prescription_medicines')->withPivot('price');
+       return $this->morphToMany(Prescription::class,'prescriptive')->withPivot('item_price');
 
     }
 }

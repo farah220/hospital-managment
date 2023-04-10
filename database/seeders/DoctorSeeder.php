@@ -21,8 +21,9 @@ class DoctorSeeder extends Seeder
             'phone' => '01125756807',
             'email' => 'farah-doctor@example.com',
             'password' => '01125756807',
-            'department' => 'dental',
+            'department_id' => 1,
             'description' => 'this is farah desc',
+            'price' => 200,
         ]);
     }
 }

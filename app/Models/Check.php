@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Check extends Model
 {
     use HasFactory;
-
+protected $guarded=[];
     public function prescriptions()
     {
-        $this->belongsToMany(Prescription::class,'prescription_checks')->withPivot('price');
+      return $this->morphToMany(Prescription::class,'prescriptive')->withPivot('item_price');
     }
 }
