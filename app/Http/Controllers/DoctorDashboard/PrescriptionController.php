@@ -26,6 +26,7 @@ class PrescriptionController extends Controller
 
         }
 
+
         return view('doctor-dashboard.prescriptions.index',compact('prescriptions'));
 
     }
@@ -41,10 +42,10 @@ class PrescriptionController extends Controller
     {    $users = User::all();
         $medicines= Medicine::all();
         $checks= Check::all();
-        $prescription['checks_names'] =implode(' , ', $prescription->checks->pluck('name')->toArray());
-        $prescription['medicines'] =implode(' , ', $prescription->medicines->pluck('name')->toArray());
+      $checks_id =  $prescription['checks_id'] = $prescription->checks->pluck('id')->toArray();
+     $medicines_id =  $prescription['medicines_id'] = $prescription->medicines->pluck('id')->toArray();
 
-        return view('doctor-dashboard.prescriptions.edit',compact('prescription','users','medicines','checks'));
+        return view('doctor-dashboard.prescriptions.edit',compact('prescription','users','medicines','checks','medicines_id','checks_id'));
     }
     public function create()
     {
@@ -87,11 +88,11 @@ class PrescriptionController extends Controller
 
         foreach ($checks as $id)
         {   $check = Check::find($id);
-            $prescription->checks()->sync($check,['item_price' => $check->price ]);
+            $prescription->checks()->syncWithPivotValues($check,['item_price' => $check->price],false);
         }
         foreach ($medicines as $id)
         {   $medicine = Medicine::find($id);
-            $prescription->medicines()->syncWithPivotValues($medicine,['item_price' => $medicine->price ]);
+            $prescription->medicines()->syncWithPivotValues($medicine,['item_price' => $medicine->price ],false);
         }
         $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total,'user_id'=>$user_id,'doctor_id'=>$doctor_id]);

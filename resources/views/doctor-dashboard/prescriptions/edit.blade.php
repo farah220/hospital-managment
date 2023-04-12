@@ -78,7 +78,7 @@
                                 <select class="form-select" data-control="select2"  name="medicines[]" multiple data-placeholder="Select an option">
                                     <option value=""> </option>
                                     @foreach($medicines as $medicine)
-                                        <option {{$medicine->name == $prescription->medicines ? 'selected': ''}} value="{{ $medicine->id }}">{{ $medicine->name }}</option>
+                                        <option {{ (in_array($medicine->id,($prescription->medicines_id))) ? 'selected':'' }} value="{{ $medicine->id }}">{{ $medicine->name }}</option>
                                     @endforeach
 
                                 </select>
@@ -96,7 +96,7 @@
                                 <select class="form-select" data-control="select2"  name="checks[]" multiple data-placeholder="Select an option">
                                     <option value=""> </option>
                                     @foreach($checks as $check)
-                                        <option value="{{ $check->id }}">{{ $check->name }}</option>
+                                        <option {{ (in_array($check->id,($prescription->checks_id))) ? 'selected':'' }} value="{{ $check->id }}">{{ $check->name }}</option>
                                     @endforeach
 
                                 </select>
