@@ -8,6 +8,7 @@ Route::view('/','pharmacist-dashboard.index');
 Route::resource('medicines','MedicineController');
 
 //Route::resource('admins','AdminController');
-//Route::post('/logout','AdminController@logout')->name('logout');
+Route::post('/logout','MedicineController@logout')->name('logout');
+
 
 });

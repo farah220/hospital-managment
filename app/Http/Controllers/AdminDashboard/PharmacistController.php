@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Pharmacist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PharmacistController extends Controller
 {
@@ -69,4 +70,5 @@ class PharmacistController extends Controller
         $pharmacist->delete();
         return redirect()->route('dashboard.pharmacists.index')->with('success_message','The pharmacist has been deleted successfully');
     }
+
 }

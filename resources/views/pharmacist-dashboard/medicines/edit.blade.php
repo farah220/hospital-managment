@@ -51,34 +51,6 @@
 
                     <!-- begin :: Row -->
                     <div class="row mb-8">
-                        <div class="col-md-12 text-center mb-5 fv-row">
-
-
-                                <!--begin::Edit button-->
-                                <label
-                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                                    data-kt-image-input-action="change"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-dismiss="click"
-                                    title="Change avatar">
-                                    <i class="bi bi-pencil-fill fs-7"></i>
-
-                                    <!--begin::Inputs-->
-                                    <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
-                                    <input type="hidden" name="avatar_remove"/>
-                                    <!--end::Inputs-->
-                                </label>
-                                <!--end::Edit button-->
-
-                            </div>
-                            <!--end::Image input-->
-
-
-                            @error('image')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-
-                        </div>
 
                         <!-- begin :: Column -->
                         <div class="col-md-6 fv-row">
@@ -128,7 +100,10 @@
 
                 </div>
                 <!-- end   :: Form footer -->
+                    </div>
+                </div>
             </form>
+
             <!-- end   :: Form -->
         </div>
         <!-- end   :: Card body -->

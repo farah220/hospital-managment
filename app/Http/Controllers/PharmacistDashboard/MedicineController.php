@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PharmacistDashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicineController extends Controller
 {
@@ -60,5 +61,10 @@ class MedicineController extends Controller
     {
         $medicine->delete();
         return redirect()->route('dashboard.medicines.index')->with('success_message','The medicine has been deleted successfully');
+    }
+    public function logOut()
+    {
+        Auth::guard('pharmacists')->logout();
+        return redirect()->route('pharmacist.login-form');
     }
 }
