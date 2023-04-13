@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medicine extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     public function prescriptions()
     {
         $this->belongsToMany(Prescription::class,'prescription_medicines')->withPivot('price');
