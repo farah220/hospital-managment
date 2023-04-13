@@ -20,8 +20,6 @@ class PrescriptionController extends Controller
 
         foreach ($prescriptions as $p){
             $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
-            $p['checks_images'] =implode(' , ', $p->checks->pluck('image')->toArray());
-            $p['checks_report_images'] =implode(', ', $p->checks->pluck('report_image')->toArray());
             $p['medicines'] =implode(' , ', $p->medicines->pluck('name')->toArray());
 
         }
@@ -39,11 +37,11 @@ class PrescriptionController extends Controller
         return view('doctor-dashboard.prescriptions.show',compact('prescription'));
     }
     public function edit(Prescription $prescription)
-    {    $users = User::all();
+    {   $users = User::all();
         $medicines= Medicine::all();
         $checks= Check::all();
-      $checks_id =  $prescription['checks_id'] = $prescription->checks->pluck('id')->toArray();
-     $medicines_id =  $prescription['medicines_id'] = $prescription->medicines->pluck('id')->toArray();
+        $checks_id =  $prescription['checks_id'] = $prescription->checks->pluck('id')->toArray();
+        $medicines_id =  $prescription['medicines_id'] = $prescription->medicines->pluck('id')->toArray();
 
         return view('doctor-dashboard.prescriptions.edit',compact('prescription','users','medicines','checks','medicines_id','checks_id'));
     }
@@ -63,14 +61,17 @@ class PrescriptionController extends Controller
        $prescription->save();
        $checks = $request->input('checks');
        $medicines = $request->input('medicines');
-
+      if(isset($checks)){
       foreach ($checks as $id)
        {   $check = Check::find($id);
            $prescription->checks()->attach($check,['item_price' => $check->price ]);
        }
+       }
+        if(isset($medicines)){
         foreach ($medicines as $id)
         {   $medicine = Medicine::find($id);
             $prescription->medicines()->attach($medicine,['item_price' => $medicine->price ]);
+        }
         }
        $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total]);
@@ -85,14 +86,19 @@ class PrescriptionController extends Controller
         $prescription->total_price = 0;
         $checks = $request->input('checks');
         $medicines = $request->input('medicines');
-
+        $prescription->checks()->detach();
+        $prescription->medicines()->detach();
+        if (isset($checks)){
         foreach ($checks as $id)
         {   $check = Check::find($id);
-            $prescription->checks()->syncWithPivotValues($check,['item_price' => $check->price],false);
+            $prescription->checks()->attach($check,['item_price' => $check->price]);
         }
+        }
+        if(isset($medicines)){
         foreach ($medicines as $id)
         {   $medicine = Medicine::find($id);
-            $prescription->medicines()->syncWithPivotValues($medicine,['item_price' => $medicine->price ],false);
+            $prescription->medicines()->attach($medicine,['item_price' => $medicine->price ]);
+        }
         }
         $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total,'user_id'=>$user_id,'doctor_id'=>$doctor_id]);
