@@ -1,210 +1,138 @@
-{{--@extends('dashboard.partials.master')--}}
-{{--@section('content')--}}
+@extends('doctor-dashboard.partials.master')
+@section('content')
 
-{{--    <!-- begin :: Subheader -->--}}
-{{--    <div class="toolbar">--}}
+    <!-- begin :: Subheader -->
+    <div class="toolbar">
 
-{{--        <div class="container-fluid d-flex flex-stack">--}}
+        <div class="container-fluid d-flex flex-stack">
 
-{{--            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"--}}
-{{--                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"--}}
-{{--                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">--}}
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
-{{--                <!-- begin :: Title -->--}}
-{{--                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Doctors</h1>--}}
-{{--                <!-- end   :: Title -->--}}
+                <!-- begin :: Title -->
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Prescriptions</h1>
+                <!-- end   :: Title -->
 
-{{--                <!-- begin :: Separator -->--}}
-{{--                <span class="h-20px border-gray-300 border-start mx-4"></span>--}}
-{{--                <!-- end   :: Separator -->--}}
+                <!-- begin :: Separator -->
+                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                <!-- end   :: Separator -->
 
-{{--            </div>--}}
+            </div>
 
-{{--        </div>--}}
+        </div>
 
-{{--    </div>--}}
-{{--    <!-- end   :: Subheader -->--}}
-
-
-{{--    @if( count($errors) > 0 )--}}
-{{--        @include('dashboard.partials.error_alert')--}}
-{{--    @endif--}}
-
-{{--    <div class="card">--}}
-{{--        <!-- begin :: Card body -->--}}
-{{--        <div class="card-body p-0">--}}
-{{--            <!-- begin :: Form -->--}}
-{{--            <form action="{{ route('dashboard.doctors.update',$doctor->id) }}" class="form" method="POST"--}}
-{{--                  enctype="multipart/form-data">--}}
-{{--                @csrf--}}
-{{--                @method('PUT')--}}
-{{--                <!-- begin :: Card header -->--}}
-
-{{--                <div class="card-header d-flex align-items-center">--}}
-{{--                    <h3 class="fw-bolder text-dark"> Edit Doctor</h3>--}}
-{{--                </div>--}}
-{{--                <!-- end   :: Card header -->--}}
-
-{{--                <!-- begin :: Inputs wrapper -->--}}
-{{--                <div class="px-8 py-4">--}}
+    </div>
+    <!-- end   :: Subheader -->
 
 
-{{--                    <!-- begin :: Row -->--}}
-{{--                    <div class="row mb-8">--}}
-{{--                        <div class="col-md-12 text-center mb-5 fv-row">--}}
+    @if( count($errors) > 0 )
+        @include('doctor-dashboard.partials.error_alert')
+    @endif
 
-{{--                            <!--begin::Image input-->--}}
-{{--                            <div class="image-input image-input-empty"--}}
-{{--                                 style="background-image: url('{{ asset('storage/images/doctors/' . $doctor['image']) }}')">--}}
-{{--                                <!--begin::Image preview wrapper-->--}}
-{{--                                <div class="image-input-wrapper w-125px h-125px"></div>--}}
-{{--                                <!--end::Image preview wrapper-->--}}
+    <div class="card">
+        <!-- begin :: Card body -->
+        <div class="card-body p-0">
+            <!-- begin :: Form -->
+            <form action="{{route('dashboard.prescriptions.update',$prescription->id)}}" class="form" method="POST"
+                  enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <!-- begin :: Card header -->
 
-{{--                                <!--begin::Edit button-->--}}
-{{--                                <label--}}
-{{--                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"--}}
-{{--                                    data-kt-image-input-action="change"--}}
-{{--                                    data-bs-toggle="tooltip"--}}
-{{--                                    data-bs-dismiss="click"--}}
-{{--                                    title="Change avatar">--}}
-{{--                                    <i class="bi bi-pencil-fill fs-7"></i>--}}
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="fw-bolder text-dark"> Edit Prescription</h3>
+                </div>
+                <!-- end   :: Card header -->
 
-{{--                                    <!--begin::Inputs-->--}}
-{{--                                    <input type="file" name="image" accept=".png, .jpg, .jpeg"/>--}}
-{{--                                    <input type="hidden" name="avatar_remove"/>--}}
-{{--                                    <!--end::Inputs-->--}}
-{{--                                </label>--}}
-{{--                                <!--end::Edit button-->--}}
+                <!-- begin :: Inputs wrapper -->
+                <div class="px-8 py-4">
 
-{{--                            </div>--}}
-{{--                            <!--end::Image input-->--}}
+                    <!-- begin :: Row -->
+                    <div class="row mb-8">
+                        <div class="col-md-12 text-center mb-5 fv-row">
 
+                            <!-- begin :: Column -->
 
-{{--                            @error('image')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
+                            <div class="col-md-6 fv-row" id="children-categories-container" >
+                                <br>
+                                <label class="fs-5 fw-bold mb-2">Patients</label>
+                                <select class="form-select" data-control="select2"  name="user_id" multiple  data-placeholder="Select an option">
+                                    <option  value=""> </option>
+                                    @foreach($users as $user)
+                                        <option {{$user->id == $prescription->user->id ? 'selected': ''}} value="{{ $user->id }}">{{$user->name}}</option>
+                                    @endforeach
 
-{{--                        </div>--}}
+                                </select>
+                                @error('users')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
-{{--                        <!-- begin :: Column -->--}}
-{{--                        <div class="col-md-6 fv-row">--}}
+                            <!-- end   :: Column -->
+                            <!-- begin :: Column -->
 
-{{--                            <label class="fs-5 fw-bold mb-2">Name</label>--}}
-{{--                            <div class="form-floating">--}}
-{{--                                <input type="text" class="form-control" name="name"--}}
-{{--                                       value="{{ old('name') ?? $doctor->name }}">--}}
+                            <div class="col-md-6 fv-row" id="children-categories-container" >
+                                <br>
+                                <label class="fs-5 fw-bold mb-2">Medicines</label>
+                                <select class="form-select" data-control="select2"  name="medicines[]" multiple data-placeholder="Select an option">
+                                    <option value=""> </option>
+                                    @foreach($medicines as $medicine)
+                                        <option {{ (in_array($medicine->id,($prescription->medicines_id))) ? 'selected':'' }} value="{{ $medicine->id }}">{{ $medicine->name }}</option>
+                                    @endforeach
 
-{{--                            </div>--}}
-{{--                            @error('name')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
+                                </select>
+                                @error('medicines')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
+                            <!-- end   :: Column -->
+                            <!-- begin :: Column -->
 
-{{--                        </div>--}}
-{{--                        <div class="col-md-6 fv-row">--}}
+                            <div class="col-md-6 fv-row" id="children-categories-container" >
+                                <br>
+                                <label class="fs-5 fw-bold mb-2">Checks</label>
+                                <select class="form-select" data-control="select2"  name="checks[]" multiple data-placeholder="Select an option">
+                                    <option value=""> </option>
+                                    @foreach($checks as $check)
+                                        <option {{ (in_array($check->id,($prescription->checks_id))) ? 'selected':'' }} value="{{ $check->id }}">{{ $check->name }}</option>
+                                    @endforeach
 
-{{--                            <label class="fs-5 fw-bold mb-2">Email</label>--}}
-{{--                            <div class="form-floating">--}}
-{{--                                <input type="text" class="form-control" name="email"--}}
-{{--                                       value="{{ old('email') ?? $doctor->email }}"/>--}}
+                                </select>
+                                @error('checks')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
-{{--                            </div>--}}
-{{--                            @error('email')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
+                            <!-- end   :: Column -->
 
-
-{{--                        </div>--}}
-{{--                        <div class="col-md-6 fv-row">--}}
-{{--                            <br>--}}
-{{--                            <label class="fs-5 fw-bold mb-2">Phone</label>--}}
-{{--                            <div class="form-floating">--}}
-{{--                                <input type="text" class="form-control" name="phone"--}}
-{{--                                       value="{{ old('phone') ?? $doctor->phone }}"/>--}}
-
-{{--                            </div>--}}
-{{--                            @error('phone')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
-
-
-{{--                        </div>--}}
-{{--                        <div class="col-md-6 fv-row">--}}
-{{--                            <br>--}}
-{{--                            <label class="fs-5 fw-bold mb-2">Price</label>--}}
-{{--                            <div class="form-floating">--}}
-{{--                                <input type="text" class="form-control" name="price"--}}
-{{--                                       value="{{ old('price') ?? $doctor->price }}">--}}
-
-{{--                            </div>--}}
-{{--                            @error('price')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
+                        </div>
+                        <!-- end   :: Row -->
+                    <!-- begin :: Row -->
 
 
-{{--                        </div>--}}
-{{--                        <div class="col-md-6 fv-row">--}}
-{{--                            <br>--}}
-{{--                            <label class="fs-5 fw-bold mb-2">Description</label>--}}
-{{--                            <div class="form-floating">--}}
-{{--                                <input type="text" class="form-control" name="description"--}}
-{{--                                       value="{{ old('description') ?? $doctor->description }}">--}}
+                </div>
+                <!-- end   :: Inputs wrapper -->
 
-{{--                            </div>--}}
-{{--                            @error('description')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
+                <!-- begin :: Form footer -->
+                <div class="form-footer p-8 text-end">
 
+                    <!-- begin :: Submit btn -->
+                    <button type="submit" class="btn btn-primary">
 
-{{--                        </div>--}}
-{{--                        <div class="col-md-6 fv-row" id="children-categories-container" >--}}
+                        <span class="indicator-label">save Edit</span>
 
-{{--                            <label class="fs-5 fw-bold mb-2">Department</label>--}}
-{{--                            <select class="form-select" data-control="select2"  name="department_id" multiple data-placeholder="{{old('department') ?? $doctor->department->name}}">--}}
-{{--                                <option value=""> </option>--}}
-{{--                                @foreach($departments as $department)--}}
-{{--                                    <option value="{{ $department->id }}">{{ $department->name }}</option>--}}
-{{--                                @endforeach--}}
+                    </button>
+                    <!-- end   :: Submit btn -->
 
-{{--                            </select>--}}
-{{--                            @error('departments')--}}
-{{--                            <p class="text-danger">{{ $message }}</p>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
+                </div>
+                <!-- end   :: Form footer -->
+                </div>
+            </form>
+            <!-- end   :: Form -->
+        </div>
+        <!-- end   :: Card body -->
+    </div>
 
-{{--                        <!-- end   :: Column -->--}}
-
-{{--                        <!-- begin :: Column -->--}}
-
-
-{{--                        <!-- end   :: Column -->--}}
-
-{{--                    </div>--}}
-{{--                    <!-- end   :: Row -->--}}
-
-{{--                    <!-- begin :: Row -->--}}
-
-
-{{--                </div>--}}
-{{--                <!-- end   :: Inputs wrapper -->--}}
-
-{{--                <!-- begin :: Form footer -->--}}
-{{--                <div class="form-footer p-8 text-end">--}}
-
-{{--                    <!-- begin :: Submit btn -->--}}
-{{--                    <button type="submit" class="btn btn-primary">--}}
-
-{{--                        <span class="indicator-label">save Edit</span>--}}
-
-{{--                    </button>--}}
-{{--                    <!-- end   :: Submit btn -->--}}
-
-{{--                </div>--}}
-{{--                <!-- end   :: Form footer -->--}}
-{{--            </form>--}}
-{{--            <!-- end   :: Form -->--}}
-{{--        </div>--}}
-{{--        <!-- end   :: Card body -->--}}
-{{--    </div>--}}
-
-{{--@endsection--}}
+@endsection

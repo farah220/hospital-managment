@@ -32,7 +32,7 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
                     <div class="menu-content pb-2">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Doctor Dashboard</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">Pharmacist Dashboard</span>
                     </div>
                 </div>
 
@@ -52,24 +52,24 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
-                                <span class="menu-title">Prescriptions</span>
+                                <span class="menu-title">Medicines</span>
                                 <span class="menu-arrow"></span>
                             </span>
             <div class="menu-sub menu-sub-accordion menu-active-bg">
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('dashboard.prescriptions.index')}}">
+                    <a class="menu-link" href="{{route('dashboard.medicines.index')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                        <span class="menu-title">Prescriptions List</span>
+                        <span class="menu-title">Medicine List</span>
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('dashboard.prescriptions.create')}}">
+                    <a class="menu-link" href="{{route('dashboard.medicines.create')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                        <span class="menu-title">New Prescription</span>
+                        <span class="menu-title">New Medicine</span>
                     </a>
                 </div>
 
@@ -85,4 +85,3 @@
     </div>
 </div>
 <!--end::Aside-->
-</div>

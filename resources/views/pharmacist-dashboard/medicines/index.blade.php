@@ -1,9 +1,9 @@
-@extends('doctor-dashboard.partials.master')
+@extends('pharmacist-dashboard.partials.master')
 
 @section('content')
 
     @if( session()->has('success_message') )
-        @include('doctor-dashboard.partials.success_alert')
+        @include('pharmacist-dashboard.partials.success_alert')
     @endif
     <!--begin::Card-->
     <div class="card m-10">
@@ -19,7 +19,7 @@
                 <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 
                     <!--begin::Add customer-->
-                    <a  href="{{ route('dashboard.prescriptions.create') }}" class="btn btn-primary" >
+                    <a  href="{{ route('dashboard.medicines.create') }}" class="btn btn-primary" >
                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -27,7 +27,7 @@
                                 <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->Add Prescription
+                        <!--end::Svg Icon-->Add Medicine
                     </a>
                     <!--end::Add customer-->
                 </div>
@@ -52,9 +52,7 @@
                 <!--begin::Table row-->
                 <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                     <th class="min-w-125px">Name</th>
-                    <th class="min-w-125px">Medicines</th>
-                    <th class="min-w-125px">Checks</th>
-                    <th class="min-w-125px">Total Price</th>
+                    <th class="min-w-125px">Price</th>
                     <th class="min-w-125px">Created At</th>
                     <th class="min-w-70px">Actions</th>
                 </tr>
@@ -63,25 +61,18 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
-                 @forelse($prescriptions as $prescription)
+                 @forelse($medicines as $medicine)
                     <tr>
                         <!--begin::Name=-->
                         <td>
-                            {{$prescription->user->name}}
+                            {{$medicine->name}}
                         </td>
                         <!--end::Name=-->
-                        <!--begin::Email=-->
                         <td>
-                           {{$prescription->medicines}}
-                        </td>
-                        <td>
-                            {{$prescription->checks_names}}
-                        </td>
-                        <td>
-                            {{$prescription->total_price}}
+                            {{$medicine->price}}
                         </td>
                         <!--begin::Date=-->
-                        <td>{{ $prescription->created_at }}</td>
+                        <td>{{ $medicine->created_at }}</td>
                         <!--end::Date=-->
                         <!--begin::Action=-->
                         <td>
@@ -100,17 +91,17 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.prescriptions.show',$prescription) }}" class="menu-link px-3">View</a>
+                                    <a href="{{ route('dashboard.medicines.show',$medicine) }}" class="menu-link px-3">View</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.prescriptions.edit',$prescription) }}" class="menu-link px-3">Edit</a>
+                                    <a href="{{ route('dashboard.medicines.edit',$medicine) }}" class="menu-link px-3">Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <form method="POST" action="{{ route('dashboard.prescriptions.destroy',$prescription) }}">
+                                    <form method="POST" action="{{ route('dashboard.medicines.destroy',$medicine) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button class=" btn menu-link px-5" type="submit">Delete</button>
@@ -133,6 +124,7 @@
                 <!--end::Table body-->
             </table>
             <!--end::Table-->
+            {{$medicines->links()}}
         </div>
         <!--end::Card body-->
     </div>

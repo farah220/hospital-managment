@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
         });
         Route::namespace($this->NAMESPACE)->prefix('dashboard')->group(base_path('routes/dashboard.php'));
         Route::namespace($this->NAMESPACE)->prefix('doctor-dashboard')->group(base_path('routes/doctor-dashboard.php'));
-        Route::namespace($this->NAMESPACE)->prefix('laboratorist-dashboard')->group(base_path('routes/laboratorist-dashboard.php'));
+        Route::namespace($this->NAMESPACE)->prefix('pharmacist-dashboard')->group(base_path('routes/pharmacist-dashboard.php'));
 
     }
 

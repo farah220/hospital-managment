@@ -36,16 +36,16 @@ class User extends Authenticatable
 
     public function reports()
     {
-        $this->hasMany(Report::class);
+        return $this->hasMany(Report::class);
     }
 
     public function prescriptions()
     {
-        $this->hasMany(Prescription::class);
+        return $this->hasMany(Prescription::class)->with('checks','medicines');
     }
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Hash::make($value);
+        return $this->attributes['password'] = Hash::make($value);
     }
 
 }

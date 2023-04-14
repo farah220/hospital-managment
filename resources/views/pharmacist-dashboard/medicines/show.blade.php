@@ -1,4 +1,4 @@
-@extends('doctor-dashboard.partials.master')
+@extends('pharmacist-dashboard.partials.master')
 @section('content')
 
         <!-- begin :: Subheader -->
@@ -9,7 +9,7 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                     <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Prescriptions</h1>
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Medicines</h1>
                     <!-- end   :: Title -->
 
                     <!-- begin :: Separator -->
@@ -29,11 +29,11 @@
             <!-- begin :: Card body -->
             <div class="card-body p-0">
                 <!-- begin :: Form -->
-                <form action="" class="form" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.medicines.show',$medicine) }}" class="form" method="post" enctype="multipart/form-data">
                 @csrf
                 <!-- begin :: Card header -->
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Prescriptions Details</h3>
+                        <h3 class="fw-bolder text-dark"> Medicine Details</h3>
                     </div>
                     <!-- end   :: Card header -->
 
@@ -44,75 +44,41 @@
                         <!-- begin :: Row -->
                         <div class="row mb-8">
                             <div class="col-md-12 text-center mb-5 fv-row">
-                                <!-- begin :: Column -->
-                                <div class="col-md-6 fv-row">
-
-                                    <label class="fs-5 fw-bold mb-2">Name</label>
-                                    <div class="form-floating">
-                                        <input type="text" disabled class="form-control" value="{{ $prescription->user->name }}" >
-
-                                    </div>
-                                    @error('name')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-
-
-                                </div>
-                                <!-- end   :: Column -->
-                            <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
-
-                                <label class="fs-5 fw-bold mb-2">Checks</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control" value="{{ $prescription->checks_names }}" >
-
-                                </div>
-                                @error('checks_names')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-
-
-                            </div>
-                            <!-- end   :: Column -->
-
 
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Medicines</label>
+                                <label class="fs-5 fw-bold mb-2">Name</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $prescription->medicines }}" />
+                                    <input type="text" disabled class="form-control" value="{{ $medicine->name }}" >
 
                                 </div>
-                                @error('medicines')
+                                @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
                             <!-- end   :: Column -->
-                                <!-- begin :: Column -->
+
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Total Cost</label>
+                                <label class="fs-5 fw-bold mb-2">Price</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $prescription->total_price }}" />
+                                    <input type="text" disabled class="form-control"  value="{{ $medicine->price }}" />
 
                                 </div>
-                                @error('total_price')
+                                @error('price')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
-                            <!-- end   :: Column -->
-
-
 
                         </div>
                         <!-- end   :: Row -->
 
-                        </div>
+
 
 
 
@@ -123,7 +89,7 @@
                     <div class="form-footer p-8 text-end">
 
                         <!-- begin :: Submit btn -->
-                        <a class="btn btn-primary" href="{{ route('dashboard.prescriptions.index') }}">
+                        <a class="btn btn-primary" href="{{ route('dashboard.medicines.index') }}">
                             Back
                         </a>
                         <!-- end   :: Submit btn -->

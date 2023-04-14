@@ -55,7 +55,7 @@ public function PharmacistDashboardLogin(Request $request)
 
        if( auth('pharmacists')->attempt($credentials) )
        {
-           return redirect('/');
+           return redirect('/pharmacist-dashboard');
        }
 
        throw ValidationException::withMessages(['password' => 'invalid password']);

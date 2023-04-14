@@ -137,10 +137,10 @@
                             <div class="col-md-6 fv-row" id="children-categories-container" >
                             <br>
                                 <label class="fs-5 fw-bold mb-2">Department</label>
-                                <select class="form-select" data-control="select2"  name="department_id" multiple data-placeholder="Select an option">
+                                <select id="department-sp" class="form-select" data-control="select2"  name="department_id[]" multiple data-placeholder="Select an option">
                                     <option value=""> </option>
                                     @foreach($departments as $department)
-                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        <option  value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
 
                                 </select>

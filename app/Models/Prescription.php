@@ -8,19 +8,37 @@ use Illuminate\Database\Eloquent\Model;
 class Prescription extends Model
 {
     use HasFactory;
-
+   protected $guarded = [];
     public function checks()
     {
-        $this->belongsToMany(Check::class,'prescription_checks')->withPivot('price');
+       return $this->morphedByMany(Check::class,'prescriptive')->withPivot('item_price');
     }
 
     public function medicines()
     {
-        $this->belongsToMany(Medicine::class,'prescription_medicines')->withPivot('price');
+      return  $this->morphedByMany(Medicine::class,'prescriptive')->withPivot('item_price');
     }
 
-    public function users()
+    public function getItemsSum()
     {
-        $this->belongsTo(User::class);
+        $total = 0;
+        $total += $this->checks->sum(function($check) {
+            return $check->pivot->item_price;
+        });
+
+
+        $total += $this->medicines->sum(function($medicine) {
+            return $medicine->pivot->item_price;
+        });
+
+        return $total;
+    }
+    public function user()
+    {
+      return  $this->belongsTo(User::class);
+    }
+    public function doctor()
+    {
+      return  $this->belongsTo(Doctor::class);
     }
 }
