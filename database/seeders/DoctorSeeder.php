@@ -16,14 +16,14 @@ class DoctorSeeder extends Seeder
      */
     public function run()
     {
-        Doctor::create([
-            'name' => 'farah',
-            'phone' => '01125756807',
-            'email' => 'farah-doctor@example.com',
-            'password' => '01125756807',
-            'department_id' => 1,
-            'description' => 'this is farah desc',
-            'price' => 200,
-        ]);
+//        Doctor::create([
+//            'name' => 'farah',
+//            'phone' => '01125756807',
+//            'email' => 'farah-doctor@example.com',
+//            'password' => '01125756807',
+//            'department_id' => 1,
+//            'description' => 'this is farah desc',
+//            'price' => 200,
+//        ]);
     }
 }

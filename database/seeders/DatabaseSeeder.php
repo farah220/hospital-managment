@@ -20,6 +20,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
         UserSeeder::class
     ]);
+        $this->call([
+            LaboratoristSeeder::class
+        ]);
+        $this->call([
+            DoctorSeeder::class
+        ]);
+//        $this->call([
+//            DoctorSeeder::class
+//        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
