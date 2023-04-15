@@ -1,172 +1,105 @@
-{{--@extends('dashboard.partials.master')--}}
-{{--@section('content')--}}
+@extends('laboratorist-dashboard.partials.master')
+@section('content')
 
-{{--        <!-- begin :: Subheader -->--}}
-{{--        <div class="toolbar">--}}
+        <!-- begin :: Subheader -->
+        <div class="toolbar">
 
-{{--            <div class="container-fluid d-flex flex-stack">--}}
+            <div class="container-fluid d-flex flex-stack">
 
-{{--                <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">--}}
+                <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
-{{--                    <!-- begin :: Title -->--}}
-{{--                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Doctors</h1>--}}
-{{--                    <!-- end   :: Title -->--}}
+                    <!-- begin :: Title -->
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Checks</h1>
+                    <!-- end   :: Title -->
 
-{{--                    <!-- begin :: Separator -->--}}
-{{--                    <span class="h-20px border-gray-300 border-start mx-4"></span>--}}
-{{--                    <!-- end   :: Separator -->--}}
-
-
-
-{{--                </div>--}}
-
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--        <!-- end   :: Subheader -->--}}
-
-{{--        <div class="card">--}}
-{{--            <!-- begin :: Card body -->--}}
-{{--            <div class="card-body p-0">--}}
-{{--                <!-- begin :: Form -->--}}
-{{--                <form action="{{ route('dashboard.doctors.show',$doctor) }}" class="form" method="post" enctype="multipart/form-data">--}}
-{{--                @csrf--}}
-{{--                <!-- begin :: Card header -->--}}
-{{--                    <div class="card-header d-flex align-items-center">--}}
-{{--                        <h3 class="fw-bolder text-dark"> Doctor Details</h3>--}}
-{{--                    </div>--}}
-{{--                    <!-- end   :: Card header -->--}}
-
-{{--                    <!-- begin :: Inputs wrapper -->--}}
-{{--                    <div class="px-8 py-4">--}}
+                    <!-- begin :: Separator -->
+                    <span class="h-20px border-gray-300 border-start mx-4"></span>
+                    <!-- end   :: Separator -->
 
 
-{{--                        <!-- begin :: Row -->--}}
-{{--                        <div class="row mb-8">--}}
-{{--                            <div class="col-md-12 text-center mb-5 fv-row">--}}
 
-{{--                                <!--begin::Image input-->--}}
-{{--                                <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/doctors/' . $doctor['image']) }}')">--}}
-{{--                                    <!--begin::Image preview wrapper-->--}}
-{{--                                    <div class="image-input-wrapper w-125px h-125px"></div>--}}
-{{--                                    <!--end::Image preview wrapper-->--}}
-{{--                                </div>--}}
-{{--                                <!--end::Image input-->--}}
+                </div>
 
-{{--                                @error('image')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
+            </div>
 
-{{--                            </div>--}}
-{{--                            <!-- begin :: Column -->--}}
-{{--                            <div class="col-md-6 fv-row">--}}
+        </div>
+        <!-- end   :: Subheader -->
 
-{{--                                <label class="fs-5 fw-bold mb-2">Name</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control" value="{{ $doctor->name }}" >--}}
+        <div class="card">
+            <!-- begin :: Card body -->
+            <div class="card-body p-0">
+                <!-- begin :: Form -->
+                <form action="{{ route('dashboard.checks.show',$check) }}" class="form" method="post" enctype="multipart/form-data">
+                @csrf
+                <!-- begin :: Card header -->
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="fw-bolder text-dark"> Check Details</h3>
+                    </div>
+                    <!-- end   :: Card header -->
 
-{{--                                </div>--}}
-{{--                                @error('name')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
+                    <!-- begin :: Inputs wrapper -->
+                    <div class="px-8 py-4">
 
 
-{{--                            </div>--}}
-{{--                            <!-- end   :: Column -->--}}
+                        <!-- begin :: Row -->
+                        <div class="row mb-8">
 
-{{--                            <!-- begin :: Column -->--}}
-{{--                            <div class="col-md-6 fv-row">--}}
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
 
-{{--                                <label class="fs-5 fw-bold mb-2">Phone</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />--}}
+                                <label class="fs-5 fw-bold mb-2">Name</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control" value="{{ $check->name }}" >
 
-{{--                                </div>--}}
-{{--                                @error('phone')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
-
-
-{{--                            </div>--}}
-{{--                            <!-- end   :: Column -->--}}
-{{--                            <div class="col-md-6 fv-row">--}}
-
-{{--                                <label class="fs-5 fw-bold mb-2">Phone</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />--}}
-
-{{--                                </div>--}}
-{{--                                @error('phone')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
+                                </div>
+                                @error('name')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
 
 
-{{--                            </div>--}}
-{{--                            <div class="col-md-6 fv-row">--}}
+                            </div>
+                            <!-- end   :: Column -->
 
-{{--                                <label class="fs-5 fw-bold mb-2">Description</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control"  value="{{ $doctor->description }}" />--}}
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
 
-{{--                                </div>--}}
-{{--                                @error('description')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
+                                <label class="fs-5 fw-bold mb-2">Price</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control"  value="{{ $check->price }}" />
 
-
-{{--                            </div>--}}
-{{--                            <div class="col-md-6 fv-row">--}}
-
-{{--                                <label class="fs-5 fw-bold mb-2">Department</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control"  value="{{ $doctor->department->name }}" />--}}
-
-{{--                                </div>--}}
-{{--                                @error('department')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
+                                </div>
+                                @error('price')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
 
 
-{{--                            </div>--}}
-{{--                            <div class="col-md-6 fv-row">--}}
+                            </div>
 
-{{--                                <label class="fs-5 fw-bold mb-2">Price</label>--}}
-{{--                                <div class="form-floating">--}}
-{{--                                    <input type="text" disabled class="form-control"  value="{{ $doctor->price }}" />--}}
-
-{{--                                </div>--}}
-{{--                                @error('price')--}}
-{{--                                <p class="text-danger">{{ $message }}</p>--}}
-{{--                                @enderror--}}
-
-
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-{{--                        <!-- end   :: Row -->--}}
+                        </div>
+                        <!-- end   :: Row -->
 
 
 
 
 
-{{--                    </div>--}}
-{{--                    <!-- end   :: Inputs wrapper -->--}}
+                    </div>
+                    <!-- end   :: Inputs wrapper -->
 
-{{--                    <!-- begin :: Form footer -->--}}
-{{--                    <div class="form-footer p-8 text-end">--}}
+                    <!-- begin :: Form footer -->
+                    <div class="form-footer p-8 text-end">
 
-{{--                        <!-- begin :: Submit btn -->--}}
-{{--                        <a class="btn btn-primary" href="{{ route('dashboard.doctors.index') }}">--}}
-{{--                            Back--}}
-{{--                        </a>--}}
-{{--                        <!-- end   :: Submit btn -->--}}
+                        <!-- begin :: Submit btn -->
+                        <a class="btn btn-primary" href="{{ route('dashboard.checks.index') }}">
+                            Back
+                        </a>
+                        <!-- end   :: Submit btn -->
 
-{{--                    </div>--}}
-{{--                    <!-- end   :: Form footer -->--}}
-{{--                </form>--}}
-{{--                <!-- end   :: Form -->--}}
-{{--            </div>--}}
-{{--            <!-- end   :: Card body -->--}}
-{{--        </div>--}}
+                    </div>
+                    <!-- end   :: Form footer -->
+                </form>
+                <!-- end   :: Form -->
+            </div>
+            <!-- end   :: Card body -->
+        </div>
 
-{{--@endsection--}}
+@endsection

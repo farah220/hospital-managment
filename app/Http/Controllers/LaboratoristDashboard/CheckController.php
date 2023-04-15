@@ -15,68 +15,59 @@ class CheckController extends Controller
 
     public function index()
     {
-        $laboratorists = Laboratorist::paginate(3);
-        return view('dashboard.laboratorists.index',compact('laboratorists'));
+        $checks = Check::paginate(3);
+        return view('laboratorist-dashboard.checks.index', compact('checks'));
     }
 
     public function create()
     {
-        return view('dashboard.laboratorists.create');
+        return view('laboratorist-dashboard.checks.create');
     }
 
-    public function show(Laboratorist $laboratorist)
+    public function show(Check $check)
     {
-        return view('dashboard.laboratorists.show',compact('laboratorist'));
+        return view('laboratorist-dashboard.checks.show', compact('check'));
     }
 
-    public function edit(Laboratorist $laboratorist)
+    public function edit(Check $check)
     {
-        return view('dashboard.laboratorists.edit',compact('laboratorist'));
+        return view('laboratorist-dashboard.checks.edit', compact('check'));
     }
 
     public function store(Request $request)
     {
         $attributes = $request->validate([
             'name' => ['required'],
-            'email' => ['required' , 'unique:laboratorists'],
-            'phone' => ['required' , 'unique:laboratorists'],
-            'image' => ['required' , 'unique:laboratorists'],
-
+            'price' => ['required'],
         ]);
-        $attributes['password']=$attributes['phone'];
-        $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
+        Check::create($attributes);
 
 
-        Laboratorist::create($attributes);
-
-
-        return redirect()->route('dashboard.laboratorists.index')->with('success_message','The new laboratorist has been added successfully');
+        return redirect()->route('dashboard.checks.index')->with('success_message', 'The new check has been added successfully');
 
     }
 
-    public function update(Laboratorist $laboratorist,Request $request)
+    public function update(Check $check, Request $request)
     {
         $attributes = $request->validate([
             'name' => ['required'],
-            'email' => ['required' , 'unique:laboratorists,email,' . $laboratorist->id ,'email'],
-            'phone' => ['required' , 'unique:laboratorists,phone,' . $laboratorist->id ],
-            'image' => [ 'nullable' ],
+            'price' => ['required'],
 
         ]);
-        if ( request()->file('image') )
-            $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
 
-        $laboratorist->update($attributes);
 
-        return redirect()->route('dashboard.laboratorists.index')->with('success_message','The laboratorist has been updated successfully');
+        $check->update($attributes);
+
+        return redirect()->route('dashboard.checks.index')->with('success_message', 'The check has been updated successfully');
 
     }
 
-    public function destroy(Laboratorist $laboratorist)
+    public function destroy(Check $check)
     {
-        $laboratorist->delete();
-        return redirect()->route('dashboard.laboratorists.index')->with('success_message','The laboratorist has been deleted successfully');
+        $check->delete();
+        return redirect()->route('dashboard.checks.index')->with('success_message', 'The check has been deleted successfully');
     }
+
     public function logOut()
     {
         Auth::guard('laboratorists')->logout();
