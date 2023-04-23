@@ -19,6 +19,11 @@ class Prescription extends Model
       return  $this->morphedByMany(Medicine::class,'prescriptive')->withPivot('item_price');
     }
 
+    public function checkResult()
+    {
+        return $this->hasOne(CheckResult::class)->with('CheckResultImages');
+    }
+
     public function getItemsSum()
     {
         $total = 0;

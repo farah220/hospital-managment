@@ -1,4 +1,4 @@
-@extends('doctor-dashboard.partials.master')
+@extends('laboratorist-dashboard.partials.master')
 @section('content')
 
         <!-- begin :: Subheader -->
@@ -9,12 +9,14 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                     <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Prescriptions</h1>
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Report</h1>
                     <!-- end   :: Title -->
 
                     <!-- begin :: Separator -->
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
                     <!-- end   :: Separator -->
+
+
 
                 </div>
 
@@ -27,11 +29,11 @@
             <!-- begin :: Card body -->
             <div class="card-body p-0">
                 <!-- begin :: Form -->
-                <form action="" class="form" method="post" enctype="multipart/form-data">
+                <br action="" class="form" method="get" enctype="multipart/form-data">
                 @csrf
                 <!-- begin :: Card header -->
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Prescriptions Details</h3>
+                        <h3 class="fw-bolder text-dark"> Report Details</h3>
                     </div>
                     <!-- end   :: Card header -->
 
@@ -40,79 +42,75 @@
 
 
                         <!-- begin :: Row -->
-                        <div class="row mb-8">
-                            <div class="col-md-12 text-center mb-5 fv-row">
-                                <!-- begin :: Column -->
-                                <div class="col-md-6 fv-row">
+                        <br class="row mb-8">
 
-                                    <label class="fs-5 fw-bold mb-2">Name</label>
-                                    <div class="form-floating">
-                                        <input type="text" disabled class="form-control" value="{{ $prescription->user->name }}" >
-
-                                    </div>
-                                    @error('name')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-
-
-                                </div>
-                                <!-- end   :: Column -->
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Checks</label>
+                                <label class="fs-5 fw-bold mb-2">Patient</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control" value="{{ $prescription->checks_names }}" >
+                                    <input type="text" disabled class="form-control" value="{{$prescription->user->name }}" >
 
                                 </div>
-                                @error('checks_names')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
 
                             </div>
+                            <!-- end   :: Column -->
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Checks Names</label>
+                                <div class="form-floating">
+                                    <input type="text" disabled class="form-control" value="{{$prescription->checks_names }}" >
+
+                                </div>
+
+                            </div>
+                        </br>
                             <!-- end   :: Column -->
 
 
                             <!-- begin :: Column -->
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Medicines</label>
+                                <label class="fs-5 fw-bold mb-2">Checks Report</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $prescription->medicines }}" />
+                                    <input type="text" disabled class="form-control"  value="{{ $checks_result->checks_report }}" />
 
                                 </div>
-                                @error('medicines')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-
 
                             </div>
-                            <!-- end   :: Column -->
-                                <!-- begin :: Column -->
+                    </br>
                             <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Total Cost</label>
+                                <label class="fs-5 fw-bold mb-2">Xray Report</label>
                                 <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $prescription->total_price }}" />
+                                    <input type="text" disabled class="form-control"  value="{{ $checks_result->xray_report }}" />
 
                                 </div>
-                                @error('total_price')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-
 
                             </div>
-                            <!-- end   :: Column -->
+                </br>
 
+
+                @foreach($checks_result_images as $check_image)
+                    <!--begin::Image input-->
+
+                        <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/images/' . $check_image) }}')">
+                            <!--begin::Image preview wrapper-->
+                            <div class="image-input-wrapper w-125px h-125px"></div>
+                            <!--end::Image preview wrapper-->
+                        </div>
+                        <!--end::Image input-->
+                    @endforeach
 
 
                         </div>
                         <!-- end   :: Row -->
 
-                        </div>
 
 
 
+            </div>
                     </div>
                     <!-- end   :: Inputs wrapper -->
 
@@ -120,7 +118,7 @@
                     <div class="form-footer p-8 text-end">
 
                         <!-- begin :: Submit btn -->
-                        <a class="btn btn-primary" href="{{ route('dashboard.prescriptions.index') }}">
+                        <a class="btn btn-primary" href="{{ route('dashboard.checkResults.index') }}">
                             Back
                         </a>
                         <!-- end   :: Submit btn -->
