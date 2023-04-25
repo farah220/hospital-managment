@@ -1,0 +1,100 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background-attachment: fixed;
+    background-image: url("bg.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: auto;
+
+}
+
+.centertext {
+    position: absolute;
+    margin-left:20px;
+
+    padding: 20px;
+
+    font-size: 40px;
+    font-family: 'Abril Fatface', cursive;
+    color: #0e5688;
+    text-shadow: 0 0 3px #ffffff, 0 0 5px #cecece;
+
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #0e5688;
+    font-family: Arial;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 20px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left: 35px;
+
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #0e5688;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0e5688;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(202, 199, 199);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: rgb(255, 255, 255);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #b3aeae;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
