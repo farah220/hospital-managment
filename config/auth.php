@@ -56,6 +56,11 @@ return [
             'driver' => 'session',
             'provider' => 'laboratorists'
         ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
+        ],
 
     ],
 
