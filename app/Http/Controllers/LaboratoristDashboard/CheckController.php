@@ -71,6 +71,6 @@ class CheckController extends Controller
     public function logOut()
     {
         Auth::guard('laboratorists')->logout();
-        return redirect()->route('laboratorists.login-form');
+        return redirect()->route('laboratorist.login-form');
     }
 }
