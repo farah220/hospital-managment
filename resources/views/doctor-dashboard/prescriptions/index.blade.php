@@ -56,7 +56,6 @@
                     <th class="min-w-125px">Checks</th>
                     <th class="min-w-125px">Total Price</th>
                     <th class="min-w-125px">Created At</th>
-                    <th class="min-w-125px">Result</th>
                     <th class="min-w-70px">Actions</th>
                 </tr>
                 <!--end::Table row-->
@@ -83,7 +82,6 @@
                         </td>
                         <!--begin::Date=-->
                         <td>{{ $prescription->created_at }}</td>
-                        <td>Done</td>
                         <!--end::Date=-->
                         <!--begin::Action=-->
                         <td>
