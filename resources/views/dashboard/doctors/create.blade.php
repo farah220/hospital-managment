@@ -124,7 +124,7 @@
                                     <input type="text" class="form-control" id="description_inp" name="description" placeholder="example" value="{{ old('description') }}">
                                     <label for="description_inp">Enter Description</label>
                                 </div>
-                                @error('price')
+                                @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
@@ -137,7 +137,7 @@
                             <div class="col-md-6 fv-row" id="children-categories-container" >
                             <br>
                                 <label class="fs-5 fw-bold mb-2">Department</label>
-                                <select id="department-sp" class="form-select" data-control="select2"  name="department_id[]" multiple data-placeholder="Select an option">
+                                <select id="department-sp" class="form-select" data-control="select2"  name="department_id" multiple data-placeholder="Select an option">
                                     <option value=""> </option>
                                     @foreach($departments as $department)
                                         <option  value="{{ $department->id }}">{{ $department->name }}</option>

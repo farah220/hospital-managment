@@ -49,7 +49,6 @@ class DoctorController extends Controller
         $attributes['password'] = $attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'doctors');
 
-
         Doctor::create($attributes);
 
         return redirect()->route('dashboard.doctors.index')->with('success_message','The new doctor has been added successfully');
