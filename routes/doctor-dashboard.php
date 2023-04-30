@@ -7,6 +7,6 @@ Route::group(['namespace' => 'DoctorDashboard', 'as' => 'dashboard.', 'middlewar
 Route::view('/','doctor-dashboard.index');
 Route::post('/createPrescription','PrescriptionController@storePrescription')->name('prescription');
 Route::resource('prescriptions','PrescriptionController')->only(['destroy','index','create','show','edit','update']);
-Route::post('/logout','PrescriptionController@logout')->name('logout');
+Route::post('/logout','PrescriptionController@logOut')->name('doctor.logout');
     Route::get('/p','PrescriptionController@checksResult');
 });

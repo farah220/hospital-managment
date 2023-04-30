@@ -94,9 +94,22 @@
                     <!--end::Actions-->
                 </form>
                 <!--end::Form-->
+                <div class=" p-8 text-center">
+
+                    <a class="btn btn-primary" href="{{ route('main') }}">
+                        Back To Main Page
+                    </a>
+
+                </div>
             </div>
             <!--end::Wrapper-->
+
         </div>
+
+    </div>
+
+
+
         <!--end::Content-->
         <!--begin::Footer-->
         <div class="d-flex flex-center flex-column-auto p-10">

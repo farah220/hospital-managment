@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('main');
 Route::view('/admins/login','auth.admin_login')->name('admins.login-form');
 Route::post('/dashboard/login','App\Http\Controllers\Auth\AuthController@dashboardLogin')->name('admins.login');
 Route::view('/doctors/login','auth.doctor_login')->name('doctors.login-form');

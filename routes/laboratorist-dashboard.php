@@ -12,7 +12,7 @@ Route::get('/checksResult/{prescription}','CheckResultController@addView')->name
 Route::get('/checksResult/{prescription}/show','CheckResultController@show')->name('show');
 
 Route::post('/checksResults/{prescription}','CheckResultController@addCheckResult')->name('addResult');
-Route::post('/logout','CheckController@logOut')->name('logout');
+Route::post('/logout','CheckController@logOut')->name('lab.logout');
 
 
 });

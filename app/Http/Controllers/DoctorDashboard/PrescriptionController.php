@@ -16,10 +16,11 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        $prescriptions = auth()->user()->prescriptions;
+        $prescriptions = auth('doctors')->user()->prescriptions;
 
         foreach ($prescriptions as $p){
             $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
+            $p['medicines'] =implode(' , ', $p->medicines->pluck('name')->toArray());
         }
 
         return view('doctor-dashboard.prescriptions.index',compact('prescriptions'));

@@ -24,13 +24,19 @@
 </head>
 <!--end::Head-->
 <!--begin::Body-->
+
 <body id="kt_body" class="bg-body">
 <!--begin::Main-->
 <div class="d-flex flex-column flex-root">
+
+    <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+
+
     <!--begin::Authentication - Sign-in -->
     <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/development-hd.png)">
         <!--begin::Content-->
-        <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+
+
             <!--begin::Logo-->
             <a href="#" class="mb-12">
                 <img alt="Logo" src="{{ asset('dashboard-assets/media/logos/logo-2-dark.svg') }}" class="h-45px" />
@@ -38,6 +44,7 @@
             <!--end::Logo-->
             <!--begin::Wrapper-->
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+
                 <!--begin::Form-->
                 <form class="form w-100" novalidate="novalidate" method="POST" action="{{ route('admins.login') }}">
                    @csrf
@@ -90,13 +97,26 @@
                         </button>
                         <!--end::Submit button-->
 
+
                     </div>
+
                     <!--end::Actions-->
                 </form>
                 <!--end::Form-->
+                <div class=" p-8 text-center">
+
+                    <a class="btn btn-primary" href="{{ route('main') }}">
+                        Back To Main Page
+                    </a>
+
+                </div>
+
             </div>
             <!--end::Wrapper-->
+
+        <!--end::Submit button-->
         </div>
+
         <!--end::Content-->
         <!--begin::Footer-->
         <div class="d-flex flex-center flex-column-auto p-10">

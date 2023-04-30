@@ -631,7 +631,7 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <form method="POST" action="{{route('dashboard.logout')}}">
+                                <form method="POST" action="{{route('dashboard.doctor.logout')}}">
                                     @csrf
 
                                     <button class=" btn menu-link px-5" type="submit">Sign Out</button>

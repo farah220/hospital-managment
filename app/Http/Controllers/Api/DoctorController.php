@@ -9,6 +9,6 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        
+
     }
 }
