@@ -1,48 +1,12 @@
-@extends('doctor-dashboard.partials.master')
+@extends('laboratorist-dashboard.partials.master')
 
 @section('content')
 
     @if( session()->has('success_message') )
-        @include('doctor-dashboard.partials.success_alert')
+        @include('laboratorist-dashboard.partials.success_alert')
     @endif
     <!--begin::Card-->
     <div class="card m-10">
-        <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <div class="card-title">
-            </div>
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-
-                    <!--begin::Add customer-->
-                    <a  href="{{ route('dashboard.prescriptions.create') }}" class="btn btn-primary" >
-                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
-                        <span class="svg-icon svg-icon-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
-                                <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->Add Prescription
-                    </a>
-                    <!--end::Add customer-->
-                </div>
-                <!--end::Toolbar-->
-                <!--begin::Group actions-->
-                <div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
-                    <div class="fw-bolder me-5">
-                        <span class="me-2" data-kt-customer-table-select="selected_count"></span>Selected</div>
-                    <button type="button" class="btn btn-danger" data-kt-customer-table-select="delete_selected">Delete Selected</button>
-                </div>
-                <!--end::Group actions-->
-            </div>
-            <!--end::Card toolbar-->
-        </div>
-        <!--end::Card header-->
         <!--begin::Card body-->
         <div class="card-body pt-0">
             <!--begin::Table-->
@@ -52,9 +16,7 @@
                 <!--begin::Table row-->
                 <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                     <th class="min-w-125px">Name</th>
-                    <th class="min-w-125px">Medicines</th>
                     <th class="min-w-125px">Checks</th>
-                    <th class="min-w-125px">Total Price</th>
                     <th class="min-w-125px">Created At</th>
                     <th class="min-w-125px">Result</th>
                     <th class="min-w-70px">Actions</th>
@@ -73,17 +35,16 @@
                         <!--end::Name=-->
                         <!--begin::Email=-->
                         <td>
-                           {{$prescription->medicines}}
-                        </td>
-                        <td>
                             {{$prescription->checks_names}}
                         </td>
-                        <td>
-                            {{$prescription->total_price}}
-                        </td>
+
                         <!--begin::Date=-->
                         <td>{{ $prescription->created_at }}</td>
-                        <td>Done</td>
+                       @if(isset($prescription->checkResult))
+                            <td>{{$prescription->checkResult->status}}</td>
+                    @else <td>Pending</td>
+                    @endif
+
                         <!--end::Date=-->
                         <!--begin::Action=-->
                         <td>
@@ -101,22 +62,23 @@
                             <!--begin::Menu-->
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <!--begin::Menu item-->
+                                @if(isset($prescription->CheckResult))
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.prescriptions.show',$prescription) }}" class="menu-link px-3">View</a>
+                                    <a href="{{ route('dashboard.show',$prescription) }}" class="menu-link px-3">View</a>
                                 </div>
+                                @else
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.prescriptions.edit',$prescription) }}" class="menu-link px-3">Edit</a>
+                                    <a href="{{ route('dashboard.addView',$prescription) }}" class="menu-link px-3">Add Report</a>
                                 </div>
                                 <!--end::Menu item-->
+                                @endif
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <form method="POST" action="{{ route('dashboard.prescriptions.destroy',$prescription) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class=" btn menu-link px-5" type="submit">Delete</button>
-                                        </form>
+
+                                        <button class=" btn menu-link px-5" type="submit" id="button">Delete</button>
+
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -132,13 +94,35 @@
                     </tr>
                  @endforelse
                 </tbody>
+
                 <!--end::Table body-->
             </table>
+
+        {{$prescriptions->links()}}
             <!--end::Table-->
         </div>
         <!--end::Card body-->
     </div>
     <!--end::Card-->
+@push('scripts')
+{{--    <script>--}}
+{{--    $(document).ready(function () {--}}
+{{--    var table = $('#kt_customers_table').DataTable();--}}
 
+{{--    $('#kt_customers_table tbody').on('click', 'tr', function () {--}}
+{{--    if ($(this).hasClass('selected')) {--}}
+{{--    $(this).removeClass('selected');--}}
+{{--    } else {--}}
+{{--    table.$('tr.selected').removeClass('selected');--}}
+{{--    $(this).addClass('selected');--}}
+{{--    }--}}
+{{--    });--}}
+
+{{--    $('#button').click(function () {--}}
+{{--    table.row('.selected').remove().draw(false);--}}
+{{--    });--}}
+{{--    });--}}
+{{--    </script>--}}
+@endpush
 @endsection
 

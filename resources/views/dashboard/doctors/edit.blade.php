@@ -163,7 +163,7 @@
                             <select class="form-select" data-control="select2"  name="department_id" multiple data-placeholder="{{old('department') ?? $doctor->department->name}}">
                                 <option value=""> </option>
                                 @foreach($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    <option {{$doctor->department_id == $department->id? 'selected' : '' }} value="{{ $department->id }}">{{ $department->name }}</option>
                                 @endforeach
 
                             </select>

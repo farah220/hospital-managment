@@ -16,14 +16,12 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        $prescriptions = auth()->user()->prescriptions;
+        $prescriptions = auth('doctors')->user()->prescriptions;
 
         foreach ($prescriptions as $p){
             $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
             $p['medicines'] =implode(' , ', $p->medicines->pluck('name')->toArray());
-
         }
-
 
         return view('doctor-dashboard.prescriptions.index',compact('prescriptions'));
 
@@ -73,7 +71,7 @@ class PrescriptionController extends Controller
             $prescription->medicines()->attach($medicine,['item_price' => $medicine->price ]);
         }
         }
-       $total = $prescription->getItemsSum();
+        $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total]);
         return redirect(route('dashboard.prescriptions.index'))->with('success_message','The new prescription has been added successfully');
 
@@ -116,5 +114,14 @@ class PrescriptionController extends Controller
     {
         $prescription->delete();
         return redirect()->route('dashboard.prescriptions.index')->with('success_message','The prescription has been deleted successfully');
+    }
+
+    public function checksResult()
+    {
+        $prescriptions = Prescription::all();
+        foreach ($prescriptions as $p){
+            $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
+        }
+        dd($prescriptions);
     }
 }
