@@ -23,6 +23,7 @@ class PrescriptionController extends Controller
             $p['medicines'] =implode(' , ', $p->medicines->pluck('name')->toArray());
         }
 
+
         return view('doctor-dashboard.prescriptions.index',compact('prescriptions'));
 
     }
