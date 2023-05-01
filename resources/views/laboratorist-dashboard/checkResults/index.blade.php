@@ -74,12 +74,12 @@
                                 </div>
                                 <!--end::Menu item-->
                                 @endif
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
+{{--                                <!--begin::Menu item-->--}}
+{{--                                <div class="menu-item px-3">--}}
 
-                                        <button class=" btn menu-link px-5" type="submit" id="button">Delete</button>
+{{--                                        <button class=" btn menu-link px-5" type="submit" id="button">Delete</button>--}}
 
-                                </div>
+{{--                                </div>--}}
                                 <!--end::Menu item-->
                             </div>
                             <!--end::Menu-->
