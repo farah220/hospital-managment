@@ -35,4 +35,19 @@ class DoctorController extends Controller
             'message' => 'Unauthorized',
         ]);
 
-    }}
+    }
+
+    public function show(Doctor $doctor)
+    {
+        if(auth('api')->check())
+        {
+            return new DoctorResource($doctor);
+        }
+        return response()->json([
+            'status' => false,
+            'errNum' => '401',
+            'message' => 'Unauthorized',
+        ]);
+
+}
+}
