@@ -20,6 +20,7 @@ class CheckResultController extends Controller
             $p['medicines'] =implode(' , ', $p->medicines->pluck('name')->toArray());
 
         }
+
         return view('laboratorist-dashboard.checkResults.index',compact('prescriptions'));
 
     }

@@ -15,4 +15,13 @@ class CheckResult extends Model
         return $this->hasMany(CheckResultImage::class,'checkResult_id');
     }
 
+    public function prescription()
+    {
+        return $this->belongsTo(Prescription::class,'prescription_id')->with('medicines','checks');
+    }
+
+    public function laboratorist()
+    {
+        return $this->belongsTo(Laboratorist::class,'lab_id');
+}
 }

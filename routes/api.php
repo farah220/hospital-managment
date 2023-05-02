@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CheckResultController;
+use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\DoctorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +30,25 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'doctor'
+], function ($router) {
+    Route::get('/doctors', [DoctorController::class, 'index']);
+    Route::get('/my-doctors', [DoctorController::class, 'myDoctors']);
+    Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'department'
+], function ($router) {
+    Route::get('/departments', [DepartmentController::class, 'index']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'checkResult'
+], function ($router) {
+    Route::get('/checkResults', [CheckResultController::class, 'index']);
+    Route::get('/checkResults/{checkResult}', [CheckResultController::class, 'show']);
 });
