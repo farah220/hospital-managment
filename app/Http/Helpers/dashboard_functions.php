@@ -7,3 +7,18 @@ function uploadImage($image,$modelName) : string
     $image->storeAs($path , $imageName ,'public');
     return $imageName;
 }
+
+if(!function_exists('getImagePath')){
+
+    function getImagePath( $imageName = null , $defaultImage = 'default.jpg'  ): string
+    {
+        $imagePath = public_path('/storage/' . $imageName);
+
+        if ( $imageName && file_exists( $imagePath ) ) // check if the directory is null or the image doesn't exist
+            return asset('/storage')  . '/' . $imageName;
+        else
+            return asset('placeholder_images/' . $defaultImage);
+
+    }
+
+}

@@ -17,7 +17,7 @@ class DepartmentResource extends JsonResource
         return[
             'id' => $this->id,
             'name' => $this->name,
-            'image' =>$this->image,
+            'image' => getImagePath($this['image']),
             'description'=> $this->description,
             'date' => date("m-d-Y" , strtotime($this->created_at))
         ];
