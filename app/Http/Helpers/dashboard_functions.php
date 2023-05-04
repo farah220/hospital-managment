@@ -10,12 +10,12 @@ function uploadImage($image,$modelName) : string
 
 if(!function_exists('getImagePath')){
 
-    function getImagePath( $imageName = null , $defaultImage = 'default.jpg'  ): string
+    function getImagePath( $imageName = null , $defaultImage = 'default.jpg' , $folder = '' ): string
     {
         $imagePath = public_path('/storage/' . $imageName);
 
         if ( $imageName && file_exists( $imagePath ) ) // check if the directory is null or the image doesn't exist
-            return asset('/storage')  . '/' . $imageName;
+            return asset('storage')  . '/images/' . $folder . $imageName;
         else
             return asset('placeholder_images/' . $defaultImage);
 
