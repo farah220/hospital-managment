@@ -22,7 +22,7 @@ class OneCheckResultResource extends JsonResource
             'date' => date("m-d-Y" , strtotime($this->created_at)),
             'x-ray report'=> $this->xray_report,
             'checks_report' => $this->checks_report,
-            'checks result images' =>getImagePath($this['checks_result_images']),
+            'checks result images' =>getImagePath(imageName:$this->checks_result_images,folder:'images'),
             'checks' =>$this->checks,
 
 
