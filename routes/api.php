@@ -58,5 +58,7 @@ Route::group([
     'prefix' => 'prescription'
 ], function ($router) {
     Route::get('/prescriptions', [PrescriptionController::class, 'index']);
+    Route::get('/prescriptions/{prescription}', [PrescriptionController::class, 'show']);
+
 
 });
