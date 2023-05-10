@@ -16,7 +16,7 @@ class PrescriptionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'doctor name' => $this->doctor->name,
+            'doctor_name' => $this->doctor->name,
             'date' => date("m-d-Y" , strtotime($this->created_at)),
             'total price' => $this->total_price,
         ];

@@ -16,13 +16,13 @@ class OneCheckResultResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'Lab name' => $this->laboratorist->name,
+            'Lab_name' => $this->laboratorist->name,
             'doctor' => $this->doctor,
             'patient' => $this->prescription->user->name,
             'date' => date("m-d-Y" , strtotime($this->created_at)),
-            'x-ray report'=> $this->xray_report,
+            'x-ray_report'=> $this->xray_report,
             'checks_report' => $this->checks_report,
-            'checks result images' =>$this->checks_result_img,
+            'checks_result_images' =>$this->checks_result_img,
             'checks' =>$this->checks,
 
 

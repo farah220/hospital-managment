@@ -16,7 +16,7 @@ class CheckResultResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'Lab name' => $this->laboratorist->name,
+            'Lab_name' => $this->laboratorist->name,
             'date' => date("m-d-Y" , strtotime($this->created_at)),
             'doctor' => $this->doctors
         ];
