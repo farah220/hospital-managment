@@ -41,7 +41,6 @@ class PrescriptionController extends Controller
             $prescription['checks_price'] = $prescription->checks->pluck('price')->toArray();
             $prescription['medicines_name'] =$prescription->medicines->pluck('name')->toArray();
             $prescription['medicines_price'] =$prescription->medicines->pluck('price')->toArray();
-
             $prescription['medicines_total'] =  array_sum($prescription->medicines_price);
             $prescription['checks_total'] =  array_sum($prescription->checks_price);
         return new OnePrescriptionResource($prescription);
