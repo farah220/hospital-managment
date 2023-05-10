@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\Doctor;
 use App\Models\Prescription;
 use App\Models\User;
@@ -76,10 +77,11 @@ class AuthController extends Controller
     /**
      * Get the authenticated User.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return UserResource
      */
     public function userProfile() {
-        return response()->json(auth()->user());
+        $user = auth('api')->user();
+        return new UserResource($user);
     }
     /**
      * Get the token array structure.

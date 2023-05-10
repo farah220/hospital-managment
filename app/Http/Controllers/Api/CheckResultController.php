@@ -9,25 +9,35 @@ use App\Models\CheckResult;
 use App\Models\Prescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckResultController extends Controller
 {
     public function index()
     {
-        $prescriptions = auth('api')->user()->prescriptions;
-        $checks_result =new CheckResult();
-        foreach ($prescriptions as $p){
-            $checks_result->where('prescription_id','=',$p->id);
-        }
+        $prescriptions = Auth::guard('api')->user()->prescriptions;
+        $presc_ids = $prescriptions->pluck('id')->toArray();
+        $checks_result = CheckResult::all();
+foreach ($checks_result as $c){
+    foreach ($presc_ids as $p){
+     if($c->prescription_id === $p){
+    $checks[]= $c;
+}
 
-        $checks = $checks_result->get();
+        }}
 
+      if (isset($checks)){
         foreach ($checks as $c){
             $c['checks'] = $c->prescription->checks->pluck('name')->toArray();
             $c['doctors'] = $c->prescription->doctor->name;
-
         }
-        return CheckResultResource::collection($checks);
+    return CheckResultResource::collection($checks);
+
+}
+        return response()->json([
+            'message' => 'no reports',
+        ]);
+
 
 }
 
@@ -35,7 +45,12 @@ class CheckResultController extends Controller
     {
         if(auth('api')->check()){
         $checkResult['checks'] =$checkResult->prescription->checks->pluck('name')->toArray();
-        $checkResult['checks_result_images'] = $checkResult->CheckResultImages->pluck('name')->toArray();
+        $checks_result_images = $checkResult->CheckResultImages->pluck('name')->toArray();
+
+        foreach($checks_result_images as $c){
+              $images[]=getImagePath(imageName:$c,folder:'images');
+            }
+        $checkResult['checks_result_img'] = $images;
         $checkResult['doctor'] = $checkResult->prescription->doctor->name;
 
             return new OneCheckResultResource($checkResult);
