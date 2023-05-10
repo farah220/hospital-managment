@@ -15,18 +15,19 @@ class CheckResultController extends Controller
 {
     public function index()
     {
+        if(auth('api')->check()){
+
         $prescriptions = Auth::guard('api')->user()->prescriptions;
         $presc_ids = $prescriptions->pluck('id')->toArray();
         $checks_result = CheckResult::all();
-foreach ($checks_result as $c){
+        foreach ($checks_result as $c){
     foreach ($presc_ids as $p){
      if($c->prescription_id === $p){
     $checks[]= $c;
 }
 
         }}
-
-      if (isset($checks)){
+        if (isset($checks)){
         foreach ($checks as $c){
             $c['checks'] = $c->prescription->checks->pluck('name')->toArray();
             $c['doctors'] = $c->prescription->doctor->name;
@@ -36,6 +37,12 @@ foreach ($checks_result as $c){
 }
         return response()->json([
             'message' => 'no reports',
+        ]);
+    }
+        return response()->json([
+            'status' => false,
+            'errNum' => '401',
+            'message' => 'Unauthorized',
         ]);
 
 
