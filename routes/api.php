@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CheckResultController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DoctorController;
-use App\Http\Controllers\Api\PrescriptionController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,10 +55,7 @@ Route::group([
 });
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'prescription'
+    'prefix' => 'user'
 ], function ($router) {
-    Route::get('/prescriptions', [PrescriptionController::class, 'index']);
-    Route::get('/prescriptions/{prescription}', [PrescriptionController::class, 'show']);
-
-
+    Route::post('/editUser/{id}', [UserController::class, 'update']);
 });
