@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CheckResultController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\PrescriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +52,11 @@ Route::group([
 ], function ($router) {
     Route::get('/checkResults', [CheckResultController::class, 'index']);
     Route::get('/checkResults/{checkResult}', [CheckResultController::class, 'show']);
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'prescription'
+], function ($router) {
+    Route::get('/prescriptions', [PrescriptionController::class, 'index']);
+
 });
