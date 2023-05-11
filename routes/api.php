@@ -55,6 +55,13 @@ Route::group([
 });
 Route::group([
     'middleware' => 'api',
+    'prefix' => 'prescription'
+], function ($router) {
+    Route::get('/prescriptions', [CheckResultController::class, 'index']);
+    Route::get('/prescriptions/{prescription}', [CheckResultController::class, 'show']);
+});
+Route::group([
+    'middleware' => 'api',
     'prefix' => 'user'
 ], function ($router) {
     Route::post('/editUser/{id}', [UserController::class, 'update']);
