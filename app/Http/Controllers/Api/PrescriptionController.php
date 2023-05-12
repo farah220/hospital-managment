@@ -36,7 +36,7 @@ class PrescriptionController extends Controller
     public function show(Prescription $prescription)
     {
         if(auth('api')->check()){
-            $sum =0;
+
             $prescription['checks_name'] = $prescription->checks->pluck('name')->toArray();
             $prescription['checks_price'] = $prescription->checks->pluck('price')->toArray();
             $prescription['medicines_name'] =$prescription->medicines->pluck('name')->toArray();
