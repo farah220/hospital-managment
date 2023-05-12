@@ -10,24 +10,27 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function update(Request $request,$id){
+    public function update(Request $request){
+        $id = auth('api')->user()->id;
+        $data = User::find($id);
         $validator=Validator::make($request->all(),[
             'name'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
             'emergency_contact'=>'required',
-            'image' => 'required',
-//
-
+            'image'=>'nullable'
         ]);
-        $validator['image'] = uploadImage($request->file('image'),'users');
+
+        if ( $request->hasFile('image') )
+        {
+           $validator['image']  = uploadImage($request->file('image'),'patients');
+        }
+
         if($validator->fails()){
             return response()->json([
                 'status'=>400,
                 'msg'=>'error',
             ]);
         }
-        $data=User::find($id);
+
         $data->update($request->all());
         if($data){
             return new UserResource($data);

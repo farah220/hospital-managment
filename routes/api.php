@@ -65,5 +65,5 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'user'
 ], function ($router) {
-    Route::post('/editUser/{id}', [UserController::class, 'update']);
+    Route::post('/editUser/', [UserController::class, 'update']);
 });
