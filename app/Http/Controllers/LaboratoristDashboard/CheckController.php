@@ -15,7 +15,7 @@ class CheckController extends Controller
 
     public function index()
     {
-        $checks = Check::paginate(3);
+        $checks = Check::paginate(5);
         return view('laboratorist-dashboard.checks.index', compact('checks'));
     }
 

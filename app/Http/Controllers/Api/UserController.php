@@ -10,38 +10,41 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function update(Request $request){
+    public function update(Request $request)
+    {
+        if (auth('api')->check()){
         $id = auth('api')->user()->id;
         $data = User::find($id);
-        $validator=Validator::make($request->all(),[
-            'name'=>'required',
-            'emergency_contact'=>'required',
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'emergency_contact' => 'required',
         ]);
-
-        if ( request()->file('image') )
-        {
-
-
-           $image = uploadImage($request->file('image'),'patients');
-
+        $image = $data->image;
+        if (request()->file('image')) {
+            $image = uploadImage($request->file('image'), 'patients');
         }
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
-                'status'=>400,
-                'msg'=>'error',
+                'status' => 400,
+                'msg' => 'error',
             ]);
         }
 
-        $data->update([$validator,'image'=>$image]);
-        if(isset($data)){
+        $data->update([$validator, 'image' => $image]);
+        if (isset($data)) {
             return new UserResource($data);
         }
-        return  response()->json([
-            'status'=>400,
-            'msg'=>'error',
+        return response()->json([
+            'status' => 400,
+            'msg' => 'error',
         ]);
+    }
 
+    return response()->json([
+'status' => false,
+'errNum' => '401',
+'message' => 'Unauthorized',
+]);
     }
 }

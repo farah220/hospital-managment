@@ -12,7 +12,7 @@ class MedicineController extends Controller
 
     public function index()
     {
-        $medicines = Medicine::paginate(3);
+        $medicines = Medicine::paginate(5);
         return view('pharmacist-dashboard.medicines.index',compact('medicines'));
     }
 

@@ -13,7 +13,7 @@ class CheckResultController extends Controller
 {
     public function index()
     {
-        $prescriptions = Prescription::paginate(4);
+        $prescriptions = Prescription::paginate(5);
 
         foreach ($prescriptions as $p){
             $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());

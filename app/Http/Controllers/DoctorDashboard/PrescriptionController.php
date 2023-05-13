@@ -16,7 +16,7 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        $prescriptions = auth('doctors')->user()->prescriptions;
+        $prescriptions = auth('doctors')->user()->prescriptions()->paginate(6);
 
         foreach ($prescriptions as $p){
             $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
