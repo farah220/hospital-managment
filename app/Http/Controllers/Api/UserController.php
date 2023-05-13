@@ -16,12 +16,12 @@ class UserController extends Controller
         $validator=Validator::make($request->all(),[
             'name'=>'required',
             'emergency_contact'=>'required',
-            'image'=>'nullable'
+
         ]);
 
-        if ( $request->hasFile('image') )
+        if ( request()->file('image') )
         {
-           $validator['image']  = uploadImage($request->file('image'),'patients');
+           $request->image  = uploadImage($request->file('image'),'patients');
         }
 
         if($validator->fails()){
