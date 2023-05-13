@@ -21,7 +21,10 @@ class UserController extends Controller
 
         if ( request()->file('image') )
         {
-           $request->image  = uploadImage($request->file('image'),'patients');
+
+
+           $image = uploadImage($request->file('image'),'patients');
+
         }
 
         if($validator->fails()){
@@ -31,8 +34,8 @@ class UserController extends Controller
             ]);
         }
 
-        $data->update($request->all());
-        if($data){
+        $data->update([$validator,'image'=>$image]);
+        if(isset($data)){
             return new UserResource($data);
         }
         return  response()->json([
