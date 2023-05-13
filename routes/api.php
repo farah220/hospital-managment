@@ -66,4 +66,5 @@ Route::group([
     'prefix' => 'user'
 ], function ($router) {
     Route::post('/editUser/', [UserController::class, 'update']);
+
 });
