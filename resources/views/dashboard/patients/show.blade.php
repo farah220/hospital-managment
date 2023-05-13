@@ -46,10 +46,8 @@
                             <!-- begin :: Column -->
                             <div class="col-md-12 text-center mb-5 fv-row">
 
-                                @dd(getImagePath(imageName:$patient['image'],folder:'patients'))
                                 <!--begin::Image input-->
-                                <div class="image-input image-input-empty" style="background-image: url('')">
-
+                                <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/patients/' . $patient['image']) }}')">
                                     <!--begin::Image preview wrapper-->
                                     <div class="image-input-wrapper w-125px h-125px"></div>
                                     <!--end::Image preview wrapper-->
