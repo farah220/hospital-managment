@@ -1,7 +1,7 @@
 /node_modules
 /public/build
 /public/hot
-/storage
+/storage/app/public
 /composer.lock
 /vendor
 .env
@@ -17,3 +17,4 @@ yarn-error.log
 /.idea
 /.vscode
 composer.lock
+storage/app/public/images/departments/Laravel_1684006616_details_4.jpg
