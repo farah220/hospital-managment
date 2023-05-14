@@ -12,48 +12,25 @@ class UserController extends Controller
 {
     public function update(Request $request)
     {
-        if (auth('api')->check()){
         $id = auth('api')->user()->id;
         $data = User::find($id);
-
-        $validator = Validator::make($request->all(), [
+        $attributes = $request->validate([
             'name' => 'required',
             'emergency_contact' => 'required',
-            'image'=>'file'
+            'image' => 'file'
         ]);
-
         $image = $data->image;
         if (request()->file('image')) {
             $image = uploadImage($request->file('image'), 'patients');
         }
-        $attributes = $validator->safe()->all();
-        $attributes['image']= $image;
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 400,
-                'msg' => 'valdiate fail',
-            ]);
-        }
 
+        $attributes['image'] = $image;
 
         $data->update($attributes);
 
-        if (isset($data)) {
+        return new UserResource($data);
 
-            return new UserResource($data);
-        }
 
-        return response()->json([
-            'status' => 400,
-            'msg' => 'error',
-        ]);
-    }
-
-    return response()->json([
-        'status' => false,
-        'errNum' => '401',
-        'message' => 'Unauthorized',
-]);
 
     }
 }

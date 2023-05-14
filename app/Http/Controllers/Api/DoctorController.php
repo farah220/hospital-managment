@@ -17,9 +17,6 @@ class DoctorController extends Controller
 
     public function myDoctors()
     {
-        if(auth('api')->check())
-        {
-
         $prescriptions = auth('api')->user()->prescriptions;
 
         foreach ($prescriptions as $p) {
@@ -28,26 +25,13 @@ class DoctorController extends Controller
         }
 
     return DoctorResource::collection($doctors);
-    }
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
 
     }
 
     public function show(Doctor $doctor)
     {
-        if(auth('api')->check())
-        {
             return new DoctorResource($doctor);
-        }
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
+    }
 
-}
+
 }

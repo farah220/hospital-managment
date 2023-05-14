@@ -15,16 +15,15 @@ class CheckResultController extends Controller
 {
     public function index()
     {
-        if(auth('api')->check()){
 
         $prescriptions = Auth::guard('api')->user()->prescriptions;
         $presc_ids = $prescriptions->pluck('id')->toArray();
         $checks_result = CheckResult::all();
         foreach ($checks_result as $c){
-    foreach ($presc_ids as $p){
-     if($c->prescription_id === $p){
-    $checks[]= $c;
-}
+        foreach ($presc_ids as $p){
+        if($c->prescription_id === $p){
+            $checks[]= $c;
+           }
 
         }}
         if (isset($checks)){
@@ -39,18 +38,12 @@ class CheckResultController extends Controller
             'message' => 'no reports',
         ]);
     }
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
 
 
-}
 
     public function show(CheckResult $checkResult)
     {
-        if(auth('api')->check()){
+
         $checkResult['checks'] =$checkResult->prescription->checks->pluck('name')->toArray();
         $checks_result_images = $checkResult->CheckResultImages->pluck('name')->toArray();
 
@@ -62,11 +55,6 @@ class CheckResultController extends Controller
 
             return new OneCheckResultResource($checkResult);
     }
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
 
-    }
+
 }

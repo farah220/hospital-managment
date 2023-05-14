@@ -42,13 +42,13 @@ Route::group([
     Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
 });
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'department'
 ], function ($router) {
     Route::get('/departments', [DepartmentController::class, 'index']);
 });
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'checkResult'
 ], function ($router) {
     Route::get('/checkResults', [CheckResultController::class, 'index']);
@@ -62,9 +62,8 @@ Route::group([
     Route::get('/prescriptions/{prescription}', [PrescriptionController::class, 'show']);
 });
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'user'
 ], function ($router) {
     Route::post('/editUser/', [UserController::class, 'update']);
-
 });

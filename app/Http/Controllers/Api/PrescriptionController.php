@@ -13,8 +13,6 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        if(auth('api')->check()){
-
             $prescriptions = Auth::guard('api')->user()->prescriptions;
 
             if (isset($prescriptions)){
@@ -24,12 +22,6 @@ class PrescriptionController extends Controller
             return response()->json([
                 'message' => 'no prescription',
             ]);
-        }
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
 
     }
 
