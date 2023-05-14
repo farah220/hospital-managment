@@ -35,6 +35,7 @@ class UserController extends Controller
             ]);
         }
 
+
         $data->update($attributes);
 
         if (isset($data)) {

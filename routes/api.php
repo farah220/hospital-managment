@@ -34,7 +34,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'doctor'
 ], function ($router) {
     Route::get('/doctors', [DoctorController::class, 'index']);
@@ -55,7 +55,7 @@ Route::group([
     Route::get('/checkResults/{checkResult}', [CheckResultController::class, 'show']);
 });
 Route::group([
-    'middleware' => 'api',
+    'middleware' => 'auth:api',
     'prefix' => 'prescription'
 ], function ($router) {
     Route::get('/prescriptions', [PrescriptionController::class, 'index']);

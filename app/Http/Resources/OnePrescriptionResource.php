@@ -17,10 +17,8 @@ class OnePrescriptionResource extends JsonResource
         return [
             'id' => $this->id,
             'doctor_name' => $this->doctor->name,
-            'medicines_name' => $this->medicines_name,
-            'medicines_prices' =>$this->medicines_price,
-            'checks_prices' =>$this->checks_price,
-            'checks_names' =>$this->checks_name,
+            'medicines' => $this->medicines,
+            'checks' =>$this->checks,
             'medicines_total' =>$this->medicines_total,
             'checks_total' =>$this->checks_total,
             'date' => date("m-d-Y" , strtotime($this->created_at)),

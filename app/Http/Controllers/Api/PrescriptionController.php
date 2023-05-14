@@ -31,26 +31,21 @@ class PrescriptionController extends Controller
             'message' => 'Unauthorized',
         ]);
 
-
     }
+
     public function show(Prescription $prescription)
     {
-        if(auth('api')->check()){
             $prescription->load('user');
-            $prescription['checks_name'] = $prescription->checks->pluck('name')->toArray();
-            $prescription['checks_price'] = $prescription->checks->pluck('price')->toArray();
-            $prescription['medicines_name'] =$prescription->medicines->pluck('name')->toArray();
-            $prescription['medicines_price'] =$prescription->medicines->pluck('price')->toArray();
-            $prescription['medicines_total'] =  array_sum($prescription->medicines_price);
-            $prescription['checks_total'] =  array_sum($prescription->checks_price);
+            $checks_price = $prescription->checks->pluck('price')->toArray();
+            $medicines_price = $prescription->medicines->pluck('price')->toArray();
+            $checks = $prescription->checks->map(fn($check)=>['name'=> $check->name,'price'=> $check->price]);
+            $medicines = $prescription->medicines->map(fn($medicine)=>['name'=> $medicine->name,'price'=> $medicine->price]);
+            $prescription['checks'] =$checks;
+            $prescription['medicines'] = $medicines;
+            $prescription['medicines_total'] =  array_sum($medicines_price);
+            $prescription['checks_total'] =  array_sum($checks_price);
+            return new OnePrescriptionResource($prescription);
 
-        return new OnePrescriptionResource($prescription);
-        }
-
-        return response()->json([
-            'status' => false,
-            'errNum' => '401',
-            'message' => 'Unauthorized',
-        ]);
 }
+
 }
