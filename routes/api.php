@@ -60,6 +60,7 @@ Route::group([
 ], function ($router) {
     Route::get('/prescriptions', [PrescriptionController::class, 'index']);
     Route::get('/prescriptions/{prescription}', [PrescriptionController::class, 'show']);
+
 });
 Route::group([
     'middleware' => 'auth:api',

@@ -26,11 +26,14 @@ class CheckResultController extends Controller
            }
 
         }}
+
+
         if (isset($checks)){
         foreach ($checks as $c){
             $c['checks'] = $c->prescription->checks->pluck('name')->toArray();
             $c['doctors'] = $c->prescription->doctor->name;
         }
+
     return CheckResultResource::collection($checks);
 
 }
