@@ -28,10 +28,17 @@ class PrescriptionController extends Controller
     public function show(Prescription $prescription)
     {
             $prescription->load('user');
-            $checks_price = $prescription->checks->pluck('price')->toArray();
-            $medicines_price = $prescription->medicines->pluck('price')->toArray();
-            $checks = $prescription->checks->map(fn($check)=>['name'=> $check->name,'price'=> $check->price]);
-            $medicines = $prescription->medicines->map(fn($medicine)=>['name'=> $medicine->name,'price'=> $medicine->price]);
+            $checks_p = $prescription->checks;
+            $medicines_p = $prescription->medicines;
+            foreach ($checks_p as $check){
+            $checks_price[] = $check->pivot->item_price;
+            }
+            foreach ($medicines_p as $medicine){
+            $medicines_price[] = $medicine->pivot->item_price;
+            }
+
+            $checks = $checks_p->map(fn($check)=>['name'=> $check->name,'price'=> $check->pivot->item_price]);
+            $medicines = $medicines_p->map(fn($medicine)=>['name'=> $medicine->name,'price'=> $medicine->pivot->item_price]);
             $prescription['checks'] =$checks;
             $prescription['medicines'] = $medicines;
             $prescription['medicines_total'] =  array_sum($medicines_price);

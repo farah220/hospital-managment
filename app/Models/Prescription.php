@@ -30,8 +30,6 @@ class Prescription extends Model
         $total += $this->checks->sum(function($check) {
             return $check->pivot->item_price;
         });
-
-
         $total += $this->medicines->sum(function($medicine) {
             return $medicine->pivot->item_price;
         });
