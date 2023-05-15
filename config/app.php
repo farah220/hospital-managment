@@ -213,6 +213,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
         'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+        'Carbon' => 'Carbon\Carbon',
     ])->toArray(),
 
 ];
