@@ -21,10 +21,16 @@ class CheckResultController extends Controller
         $checks_result = CheckResult::query()->whereIn('prescription_id',$presc_ids);
         if (isset($checks_result)){
 
-        $checks_result->when(request('start') && request('end'),fn($query)=>$query->whereBetween('created_at',
+           $checks_result->when(request('start') && request('end'),fn($query)=>$query->whereBetween('created_at',
             [Carbon::createFromFormat('d/m/Y', request('start'))->format('Y-m-d').' 00:00:00',
              Carbon::createFromFormat('d/m/Y', request('end'))->format('Y-m-d').' 23:59:59']));
-             return CheckResultResource::collection($checks_result->get());
+         if($checks_result->doesntExist()){
+           return response()->json([
+               'message' => 'no result',
+           ]);
+           }
+            return CheckResultResource::collection($checks_result->get());
+
         }
              return response()->json([
             'message' => 'no reports',

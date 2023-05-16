@@ -22,6 +22,11 @@ class PrescriptionController extends Controller
                     fn($query)=>$query->whereBetween('created_at',
                         [Carbon::createFromFormat('d/m/Y', request('start'))->format('Y-m-d').' 00:00:00',
                         Carbon::createFromFormat('d/m/Y', request('end'))->format('Y-m-d').' 23:59:59']));
+              if($prescriptions->doesntExist()){
+                  return response()->json([
+                      'message' => 'no result',
+                  ]);
+              }
                 return PrescriptionResource::collection($prescriptions->get());
             }
             return response()->json([
