@@ -18,7 +18,7 @@ class CheckResultResource extends JsonResource
             'id' => $this->id,
             'Lab_name' => $this->laboratorist->name,
             'date' => date("m-d-Y" , strtotime($this->created_at)),
-            'doctor' => $this->doctors
+            'doctor' => $this->prescription->doctor->name
         ];
     }
 }

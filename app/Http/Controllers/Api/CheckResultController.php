@@ -7,6 +7,7 @@ use App\Http\Resources\CheckResultResource;
 use App\Http\Resources\OneCheckResultResource;
 use App\Models\CheckResult;
 use App\Models\Prescription;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,31 +16,20 @@ class CheckResultController extends Controller
 {
     public function index()
     {
-
         $prescriptions = Auth::guard('api')->user()->prescriptions;
         $presc_ids = $prescriptions->pluck('id')->toArray();
-        $checks_result = CheckResult::all();
-        foreach ($checks_result as $c){
-        foreach ($presc_ids as $p){
-        if($c->prescription_id === $p){
-            $checks[]= $c;
-           }
+        $checks_result = CheckResult::query()->whereIn('prescription_id',$presc_ids);
+        if (isset($checks_result)){
 
-        }}
-
-
-        if (isset($checks)){
-        foreach ($checks as $c){
-            $c['checks'] = $c->prescription->checks->pluck('name')->toArray();
-            $c['doctors'] = $c->prescription->doctor->name;
+        $checks_result->when(request('start') && request('end'),fn($query)=>$query->whereBetween('created_at',
+            [Carbon::createFromFormat('d/m/Y', request('start'))->format('Y-m-d').' 00:00:00',
+             Carbon::createFromFormat('d/m/Y', request('end'))->format('Y-m-d').' 23:59:59']));
+             return CheckResultResource::collection($checks_result->get());
         }
-
-    return CheckResultResource::collection($checks);
-
-}
-        return response()->json([
+             return response()->json([
             'message' => 'no reports',
         ]);
+
     }
 
 
