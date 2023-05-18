@@ -5,7 +5,7 @@
         <!--begin::Copyright-->
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted fw-bold me-1">{{ date('Y') }}©</span>
-            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">E-Commerce App</a>
+            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary"></a>
         </div>
         <!--end::Copyright-->
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('doctor-dashboard.partials.head')
+@include('dashboard.partials.head')
 <!--begin::Body-->
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 <!--begin::Main-->
@@ -25,7 +25,7 @@
 
             </div>
 
-            @include('doctor-dashboard.partials.footer')
+            @include('dashboard.partials.footer')
         </div>
         <!--end::Wrapper-->
     </div>
@@ -51,7 +51,7 @@
 
 <!--end::Main-->
 <!--begin::Javascript-->
-@include('doctor-dashboard.partials.foot')
+@include('dashboard.partials.foot')
 <!--end::Javascript-->
 </body>
 <!--end::Body-->
