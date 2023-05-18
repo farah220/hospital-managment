@@ -21,8 +21,8 @@
         <!--end::Aside mobile toggle-->
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="../../demo1/dist/index.html" class="d-lg-none">
-                <img alt="Logo" src="{{asset('dashboard-assets/media/logos/logo-3.svg')}}" class="h-30px" />
+            <a href="" class="d-lg-none">
+{{--                <img alt="Logo" src="{{asset('dashboard-assets/media/logos/logo-3.svg')}}" class="h-30px" />--}}
             </a>
         </div>
         <!--end::Mobile logo-->
