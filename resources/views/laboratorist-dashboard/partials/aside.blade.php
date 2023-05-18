@@ -53,7 +53,7 @@
                             </span>
             <div class="menu-sub menu-sub-accordion menu-active-bg">
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('dashboard.checks.index')}}">
+                    <a class="menu-link" href="{{route('lab-dashboard.checks.index')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -61,7 +61,7 @@
                     </a>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('dashboard.checks.create')}}">
+                    <a class="menu-link" href="{{route('lab-dashboard.checks.create')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -92,7 +92,7 @@
             </span>
             <div class="menu-sub menu-sub-accordion menu-active-bg">
                 <div class="menu-item">
-                    <a class="menu-link" href="{{route('dashboard.checkResults.index')}}">
+                    <a class="menu-link" href="{{route('lab-dashboard.checkResults.index')}}">
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                         </span>

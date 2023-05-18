@@ -58,6 +58,6 @@ class CheckResultController extends Controller
                 $image->save();
             }
         }
-        return redirect(route('dashboard.checkResults.index'))->with('success_message','The new Report has been added successfully');
+        return redirect(route('lab-dashboard.checkResults.index'))->with('success_message','The new Report has been added successfully');
     }
 }

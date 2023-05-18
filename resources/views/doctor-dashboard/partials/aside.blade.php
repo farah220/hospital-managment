@@ -80,7 +80,7 @@
                             </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('dashboard.prescriptions.index')}}">
+                            <a class="menu-link" href="{{route('doctor-dashboard.prescriptions.index')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -88,7 +88,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('dashboard.prescriptions.create')}}">
+                            <a class="menu-link" href="{{route('doctor-dashboard.prescriptions.create')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

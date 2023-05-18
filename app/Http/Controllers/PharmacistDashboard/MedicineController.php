@@ -40,7 +40,7 @@ class MedicineController extends Controller
 
         Medicine::create($attributes);
 
-        return redirect()->route('dashboard.medicines.index')->with('success_message','The new medicine has been added successfully');
+        return redirect()->route('pharm-dashboard.medicines.index')->with('success_message','The new medicine has been added successfully');
 
     }
 
@@ -53,14 +53,14 @@ class MedicineController extends Controller
 
         $medicine->update($attributes);
 
-        return redirect()->route('dashboard.medicines.index')->with('success_message','The medicine has been updated successfully');
+        return redirect()->route('pharm-dashboard.medicines.index')->with('success_message','The medicine has been updated successfully');
 
     }
 
     public function destroy(Medicine $medicine)
     {
         $medicine->delete();
-        return redirect()->route('dashboard.medicines.index')->with('success_message','The medicine has been deleted successfully');
+        return redirect()->route('pharm-dashboard.medicines.index')->with('success_message','The medicine has been deleted successfully');
     }
     public function logOut()
     {

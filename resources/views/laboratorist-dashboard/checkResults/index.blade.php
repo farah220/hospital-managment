@@ -26,7 +26,7 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
-                 @forelse($prescriptions as $prescription)
+                @forelse($prescriptions as $prescription)
                     <tr>
                         <!--begin::Name=-->
                         <td>
@@ -39,90 +39,76 @@
                         </td>
 
                         <!--begin::Date=-->
-                        <td>{{ $prescription->created_at }}</td>
-                       @if(isset($prescription->checkResult))
+                        <td>{{ date("m-d-Y" , strtotime($prescription->created_at)) }}
+
+                        @if(isset($prescription->checkResult))
                             <td>{{$prescription->checkResult->status}}</td>
-                    @else <td>Pending</td>
+                        @else
+                            <td>Pending</td>
                     @endif
 
-                        <!--end::Date=-->
+                    <!--end::Date=-->
                         <!--begin::Action=-->
                         <td>
-                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">Actions
+                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
+                               data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
+                               data-kt-menu-flip="top-end">Actions
                                 <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                 <span class="svg-icon svg-icon-5 m-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)" />
+                                            <polygon points="0 0 24 0 24 24 0 24"/>
+                                            <path
+                                                d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                fill="#000000" fill-rule="nonzero"
+                                                transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)"/>
                                         </g>
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon--></a>
                             <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                            <div
+                                class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 @if(isset($prescription->CheckResult))
-                                <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.show',$prescription) }}" class="menu-link px-3">View</a>
-                                </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{ route('lab-dashboard.show',$prescription) }}" class="menu-link px-3">View</a>
+                                    </div>
                                 @else
                                 <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="{{ route('dashboard.addView',$prescription) }}" class="menu-link px-3">Add Report</a>
-                                </div>
-                                <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="{{ route('lab-dashboard.addView',$prescription) }}" class="menu-link px-3">Add
+                                            Report</a>
+                                    </div>
+                                    <!--end::Menu item-->
                                 @endif
-{{--                                <!--begin::Menu item-->--}}
-{{--                                <div class="menu-item px-3">--}}
 
-{{--                                        <button class=" btn menu-link px-5" type="submit" id="button">Delete</button>--}}
-
-{{--                                </div>--}}
-                                <!--end::Menu item-->
                             </div>
                             <!--end::Menu-->
                         </td>
                         <!--end::Action=-->
                     </tr>
-                    @empty
+                @empty
                     <tr>
-                       <td colspan="5">
-                           <h4 class="text-muted text-center my-4"> No Data Available</h4>
-                       </td>
+                        <td colspan="5">
+                            <h4 class="text-muted text-center my-4"> No Data Available</h4>
+                        </td>
                     </tr>
-                 @endforelse
+                @endforelse
                 </tbody>
 
                 <!--end::Table body-->
             </table>
 
         {{$prescriptions->links()}}
-            <!--end::Table-->
+        <!--end::Table-->
         </div>
         <!--end::Card body-->
     </div>
     <!--end::Card-->
-@push('scripts')
-{{--    <script>--}}
-{{--    $(document).ready(function () {--}}
-{{--    var table = $('#kt_customers_table').DataTable();--}}
 
-{{--    $('#kt_customers_table tbody').on('click', 'tr', function () {--}}
-{{--    if ($(this).hasClass('selected')) {--}}
-{{--    $(this).removeClass('selected');--}}
-{{--    } else {--}}
-{{--    table.$('tr.selected').removeClass('selected');--}}
-{{--    $(this).addClass('selected');--}}
-{{--    }--}}
-{{--    });--}}
-
-{{--    $('#button').click(function () {--}}
-{{--    table.row('.selected').remove().draw(false);--}}
-{{--    });--}}
-{{--    });--}}
-{{--    </script>--}}
-@endpush
 @endsection
 

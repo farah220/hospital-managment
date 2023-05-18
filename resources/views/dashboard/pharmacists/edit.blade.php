@@ -6,7 +6,9 @@
 
         <div class="container-fluid d-flex flex-stack">
 
-            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                 <!-- begin :: Title -->
                 <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Pharmacists</h1>
@@ -32,10 +34,11 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.pharmacists.update',$pharmacist->id) }}" enctype="multipart/form-data" class="form" method="POST" >
-                @csrf
-                @method('PUT')
-                <!-- begin :: Card header -->
+            <form action="{{ route('dashboard.pharmacists.update',$pharmacist->id) }}" enctype="multipart/form-data"
+                  class="form" method="POST">
+            @csrf
+            @method('PUT')
+            <!-- begin :: Card header -->
 
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark"> Edit Pharmacist</h3>
@@ -52,7 +55,8 @@
                         <div class="col-md-12 text-center mb-5 fv-row">
 
                             <!--begin::Image input-->
-                            <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/pharmacists/' . $pharmacist['image']) }}')">
+                            <div class="image-input image-input-empty"
+                                 style="background-image: url('{{ asset('storage/images/pharmacists/' . $pharmacist['image']) }}')">
                                 <!--begin::Image preview wrapper-->
                                 <div class="image-input-wrapper w-125px h-125px"></div>
                                 <!--end::Image preview wrapper-->
@@ -89,7 +93,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Name</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control"  name="name" value="{{ old('name') ?? $pharmacist->name }}" >
+                                <input type="text" class="form-control" name="name"
+                                       value="{{ old('name') ?? $pharmacist->name }}">
 
                             </div>
                             @error('name')
@@ -105,7 +110,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Phone</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="phone"  value="{{ old('phone') ?? $pharmacist->phone }}" />
+                                <input type="text" class="form-control" name="phone"
+                                       value="{{ old('phone') ?? $pharmacist->phone }}"/>
 
                             </div>
                             @error('phone')
@@ -127,7 +133,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Email</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control"  name="email" value="{{ old('email') ?? $pharmacist->email }}" >
+                                <input type="text" class="form-control" name="email"
+                                       value="{{ old('email') ?? $pharmacist->email }}">
 
                             </div>
                             @error('email')
@@ -147,7 +154,7 @@
                 <div class="form-footer p-8 text-end">
 
                     <!-- begin :: Submit btn -->
-                    <button type="submit" class="btn btn-primary" >
+                    <button type="submit" class="btn btn-primary">
 
                         <span class="indicator-label">save Edit</span>
 

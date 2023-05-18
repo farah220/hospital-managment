@@ -1,101 +1,105 @@
 @extends('laboratorist-dashboard.partials.master')
 @section('content')
 
-        <!-- begin :: Subheader -->
-        <div class="toolbar">
+    <!-- begin :: Subheader -->
+    <div class="toolbar">
 
-            <div class="container-fluid d-flex flex-stack">
+        <div class="container-fluid d-flex flex-stack">
 
-                <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
-                    <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Report</h1>
-                    <!-- end   :: Title -->
+                <!-- begin :: Title -->
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Report</h1>
+                <!-- end   :: Title -->
 
-                    <!-- begin :: Separator -->
-                    <span class="h-20px border-gray-300 border-start mx-4"></span>
-                    <!-- end   :: Separator -->
+                <!-- begin :: Separator -->
+                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                <!-- end   :: Separator -->
 
-
-
-                </div>
 
             </div>
 
         </div>
-        <!-- end   :: Subheader -->
 
-        <div class="card">
-            <!-- begin :: Card body -->
-            <div class="card-body p-0">
-                <!-- begin :: Form -->
-                <br action="" class="form" method="get" enctype="multipart/form-data">
-                @csrf
-                <!-- begin :: Card header -->
-                    <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Report Details</h3>
+    </div>
+    <!-- end   :: Subheader -->
+
+    <div class="card">
+        <!-- begin :: Card body -->
+        <div class="card-body p-0">
+            <!-- begin :: Form -->
+            <form>
+            @csrf
+            <!-- begin :: Card header -->
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="fw-bolder text-dark"> Report Details</h3>
+                </div>
+                <!-- end   :: Card header -->
+
+                <!-- begin :: Inputs wrapper -->
+                <div class="px-8 py-4">
+
+
+                    <!-- begin :: Row -->
+                    <br class="row mb-8">
+
+                    <!-- begin :: Column -->
+                    <div class="col-md-6 fv-row">
+
+                        <label class="fs-5 fw-bold mb-2">Patient</label>
+                        <div class="form-floating">
+                            <input type="text" disabled class="form-control" value="{{$prescription->user->name }}">
+
+                        </div>
+
                     </div>
-                    <!-- end   :: Card header -->
+                    <br>
+                    <!-- end   :: Column -->
+                    <!-- begin :: Column -->
+                    <div class="col-md-6 fv-row">
 
-                    <!-- begin :: Inputs wrapper -->
-                    <div class="px-8 py-4">
+                        <label class="fs-5 fw-bold mb-2">Checks Names</label>
+                        <div class="form-floating">
+                            <input type="text" disabled class="form-control" value="{{$prescription->checks_names }}">
 
+                        </div>
 
-                        <!-- begin :: Row -->
-                        <br class="row mb-8">
-
-                            <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
-
-                                <label class="fs-5 fw-bold mb-2">Patient</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control" value="{{$prescription->user->name }}" >
-
-                                </div>
-
-                            </div>
-                            <!-- end   :: Column -->
-                            <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
-
-                                <label class="fs-5 fw-bold mb-2">Checks Names</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control" value="{{$prescription->checks_names }}" >
-
-                                </div>
-
-                            </div>
-                        </br>
-                            <!-- end   :: Column -->
+                    </div>
+                    <br>
+                    <!-- end   :: Column -->
 
 
-                            <!-- begin :: Column -->
-                            <div class="col-md-6 fv-row">
+                    <!-- begin :: Column -->
+                    <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Checks Report</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $checks_result->checks_report }}" />
+                        <label class="fs-5 fw-bold mb-2">Checks Report</label>
+                        <div class="form-floating">
+                            <input type="text" disabled class="form-control"
+                                   value="{{ $checks_result->checks_report }}"/>
 
-                                </div>
+                        </div>
 
-                            </div>
-                    </br>
-                            <div class="col-md-6 fv-row">
+                    </div>
+                    <br>
+                    <div class="col-md-6 fv-row">
 
-                                <label class="fs-5 fw-bold mb-2">Xray Report</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $checks_result->xray_report }}" />
+                        <label class="fs-5 fw-bold mb-2">Xray Report</label>
+                        <div class="form-floating">
+                            <input type="text" disabled class="form-control" value="{{ $checks_result->xray_report }}"/>
 
-                                </div>
+                        </div>
 
-                            </div>
-                </br>
+                    </div>
+                    <br>
 
 
                 @foreach($checks_result_images as $check_image)
                     <!--begin::Image input-->
 
-                        <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/images/' . $check_image) }}')">
+                        <div class="image-input image-input-empty"
+                             style="background-image: url('{{ asset('storage/images/images/' . $check_image) }}')">
                             <!--begin::Image preview wrapper-->
                             <div class="image-input-wrapper w-125px h-125px"></div>
                             <!--end::Image preview wrapper-->
@@ -104,31 +108,26 @@
                     @endforeach
 
 
-                        </div>
-                        <!-- end   :: Row -->
+                </div>
+                <!-- end   :: Row -->
 
 
-
-
-            </div>
-                    </div>
-                    <!-- end   :: Inputs wrapper -->
-
-                    <!-- begin :: Form footer -->
-                    <div class="form-footer p-8 text-end">
-
-                        <!-- begin :: Submit btn -->
-                        <a class="btn btn-primary" href="{{ route('dashboard.checkResults.index') }}">
-                            Back
-                        </a>
-                        <!-- end   :: Submit btn -->
-
-                    </div>
-                    <!-- end   :: Form footer -->
-                </form>
-                <!-- end   :: Form -->
-            </div>
-            <!-- end   :: Card body -->
+            </form>
         </div>
+    </div>
+    <!-- end   :: Inputs wrapper -->
+
+    <!-- begin :: Form footer -->
+    <div class="form-footer p-8 text-end">
+
+        <!-- begin :: Submit btn -->
+        <a class="btn btn-primary" href="{{ route('lab-dashboard.checkResults.index') }}">
+            Back
+        </a>
+        <!-- end   :: Submit btn -->
+
+    </div>
+    <!-- end   :: Form footer -->
+
 
 @endsection

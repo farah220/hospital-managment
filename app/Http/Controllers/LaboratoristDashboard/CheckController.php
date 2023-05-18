@@ -43,7 +43,7 @@ class CheckController extends Controller
         Check::create($attributes);
 
 
-        return redirect()->route('dashboard.checks.index')->with('success_message', 'The new check has been added successfully');
+        return redirect()->route('lab-dashboard.checks.index')->with('success_message', 'The new check has been added successfully');
 
     }
 
@@ -58,14 +58,14 @@ class CheckController extends Controller
 
         $check->update($attributes);
 
-        return redirect()->route('dashboard.checks.index')->with('success_message', 'The check has been updated successfully');
+        return redirect()->route('lab-dashboard.checks.index')->with('success_message', 'The check has been updated successfully');
 
     }
 
     public function destroy(Check $check)
     {
         $check->delete();
-        return redirect()->route('dashboard.checks.index')->with('success_message', 'The check has been deleted successfully');
+        return redirect()->route('lab-dashboard.checks.index')->with('success_message', 'The check has been deleted successfully');
     }
 
     public function logOut()

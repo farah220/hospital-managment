@@ -92,16 +92,8 @@
                         <td>
                             {{$doctor->department->name}}
                         </td>
-
-                        <!--end::Email=-->
-                        <!--begin::Phone=-->
-
-
-
-
-                        <!--end::Phone=-->
                         <!--begin::Date=-->
-                        <td>{{ $doctor->created_at }}</td>
+                        <td>{{ date("m-d-Y" , strtotime($doctor->created_at)) }}</td>
                         <!--end::Date=-->
                         <!--begin::Action=-->
                         <td>

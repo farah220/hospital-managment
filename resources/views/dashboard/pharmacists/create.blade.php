@@ -6,7 +6,9 @@
 
         <div class="container-fluid d-flex flex-stack">
 
-            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                 <!-- begin :: Title -->
                 <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Pharmacists</h1>
@@ -29,9 +31,10 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.pharmacists.store') }}" class="form" method="post" enctype="multipart/form-data">
-                @csrf
-                <!-- begin :: Card header -->
+            <form action="{{ route('dashboard.pharmacists.store') }}" class="form" method="post"
+                  enctype="multipart/form-data">
+            @csrf
+            <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark"> Add Pharmacist</h3>
                 </div>
@@ -84,7 +87,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Name</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name_inp" name="name" placeholder="example" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name_inp" name="name" placeholder="example"
+                                       value="{{ old('name') }}">
                                 <label for="name_inp">Enter Name</label>
                             </div>
                             @error('name')
@@ -100,7 +104,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Phone</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="phone_inp" name="phone" placeholder="example" value="{{ old('phone') }}">
+                                <input type="text" class="form-control" id="phone_inp" name="phone"
+                                       placeholder="example" value="{{ old('phone') }}">
                                 <label for="phone_inp">Phone</label>
                             </div>
                             @error('phone')
@@ -122,7 +127,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Email</label>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="email_inp" name="email" placeholder="example" value="{{ old('email') }}">
+                                <input type="text" class="form-control" id="email_inp" name="email"
+                                       placeholder="example" value="{{ old('email') }}">
                                 <label for="email_inp">Email</label>
                             </div>
                             @error('email')
@@ -142,7 +148,7 @@
                 <div class="form-footer p-8 text-end">
 
                     <!-- begin :: Submit btn -->
-                    <button type="submit" class="btn btn-primary" >
+                    <button type="submit" class="btn btn-primary">
 
                         <span class="indicator-label">save</span>
 

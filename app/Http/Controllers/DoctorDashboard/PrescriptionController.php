@@ -74,7 +74,7 @@ class PrescriptionController extends Controller
         }
         $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total]);
-        return redirect(route('dashboard.prescriptions.index'))->with('success_message','The new prescription has been added successfully');
+        return redirect(route('doctor-dashboard.prescriptions.index'))->with('success_message','The new prescription has been added successfully');
 
    }
 
@@ -102,7 +102,7 @@ class PrescriptionController extends Controller
         $total = $prescription->getItemsSum();
         $prescription->update(['total_price'=>$total,'user_id'=>$user_id,'doctor_id'=>$doctor_id]);
 
-        return redirect(route('dashboard.prescriptions.index'))->with('success_message','The prescription has been updated successfully');
+        return redirect(route('doctor-dashboard.prescriptions.index'))->with('success_message','The prescription has been updated successfully');
 
 
     }
@@ -114,15 +114,7 @@ class PrescriptionController extends Controller
     public function destroy(Prescription $prescription)
     {
         $prescription->delete();
-        return redirect()->route('dashboard.prescriptions.index')->with('success_message','The prescription has been deleted successfully');
+        return redirect()->route('doctor-dashboard.prescriptions.index')->with('success_message','The prescription has been deleted successfully');
     }
 
-    public function checksResult()
-    {
-        $prescriptions = Prescription::all();
-        foreach ($prescriptions as $p){
-            $p['checks_names'] =implode(' , ', $p->checks->pluck('name')->toArray());
-        }
-        dd($prescriptions);
-    }
 }

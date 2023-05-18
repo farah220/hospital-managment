@@ -6,7 +6,9 @@
 
         <div class="container-fluid d-flex flex-stack">
 
-            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                 <!-- begin :: Title -->
                 <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Departments</h1>
@@ -15,7 +17,6 @@
                 <!-- begin :: Separator -->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
                 <!-- end   :: Separator -->
-
 
 
             </div>
@@ -29,9 +30,9 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.departments.show',$department) }}" enctype="multipart/form-data" class="form" method="post" >
-                @csrf
-                <!-- begin :: Card header -->
+            <form class="form" >
+            @csrf
+            <!-- begin :: Card header -->
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark"> Department Details</h3>
                 </div>
@@ -47,7 +48,8 @@
                         <div class="col-md-12 text-center mb-5 fv-row">
 
                             <!--begin::Image input-->
-                            <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/departments/' . $department['image']) }}')">
+                            <div class="image-input image-input-empty"
+                                 style="background-image: url('{{ asset('storage/images/departments/' . $department['image']) }}')">
                                 <!--begin::Image preview wrapper-->
                                 <div class="image-input-wrapper w-125px h-125px"></div>
                                 <!--end::Image preview wrapper-->
@@ -65,7 +67,7 @@
 
                             <label class="fs-5 fw-bold mb-2">Name</label>
                             <div class="form-floating">
-                                <input type="text" disabled class="form-control" value="{{ $department->name }}" >
+                                <input type="text" disabled class="form-control" value="{{ $department->name }}">
 
                             </div>
                             @error('name')
@@ -81,7 +83,8 @@
 
                             <label class="fs-5 fw-bold mb-2">Description</label>
                             <div class="form-floating">
-                                <input type="text" disabled class="form-control"  value="{{ $department->description }}" />
+                                <input type="text" disabled class="form-control"
+                                       value="{{ $department->description }}"/>
 
                             </div>
                             @error('description')

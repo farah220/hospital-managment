@@ -34,11 +34,11 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.checks.update',$check->id) }}" class="form" method="POST"
+            <form action="{{ route('lab-dashboard.checks.update',$check->id) }}" class="form" method="POST"
                   enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <!-- begin :: Card header -->
+            @csrf
+            @method('PUT')
+            <!-- begin :: Card header -->
 
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark"> Edit Check</h3>

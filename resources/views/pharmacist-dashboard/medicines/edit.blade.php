@@ -34,11 +34,11 @@
         <!-- begin :: Card body -->
         <div class="card-body p-0">
             <!-- begin :: Form -->
-            <form action="{{ route('dashboard.medicines.update',$medicine->id) }}" class="form" method="POST"
+            <form action="{{ route('pharm-dashboard.medicines.update',$medicine->id) }}" class="form" method="POST"
                   enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <!-- begin :: Card header -->
+            @csrf
+            @method('PUT')
+            <!-- begin :: Card header -->
 
                 <div class="card-header d-flex align-items-center">
                     <h3 class="fw-bolder text-dark"> Edit Medicine</h3>
@@ -85,21 +85,21 @@
 
                         <!-- end   :: Column -->
 
-                <!-- end   :: Inputs wrapper -->
+                        <!-- end   :: Inputs wrapper -->
 
-                <!-- begin :: Form footer -->
-                <div class="form-footer p-8 text-end">
+                        <!-- begin :: Form footer -->
+                        <div class="form-footer p-8 text-end">
 
-                    <!-- begin :: Submit btn -->
-                    <button type="submit" class="btn btn-primary">
+                            <!-- begin :: Submit btn -->
+                            <button type="submit" class="btn btn-primary">
 
-                        <span class="indicator-label">save Edit</span>
+                                <span class="indicator-label">save Edit</span>
 
-                    </button>
-                    <!-- end   :: Submit btn -->
+                            </button>
+                            <!-- end   :: Submit btn -->
 
-                </div>
-                <!-- end   :: Form footer -->
+                        </div>
+                        <!-- end   :: Form footer -->
                     </div>
                 </div>
             </form>

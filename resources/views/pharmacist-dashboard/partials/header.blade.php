@@ -107,7 +107,7 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <form method="POST" action="{{route('dashboard.pharmacist.logout')}}">
+                                <form method="POST" action="{{route('pharm-dashboard.logout')}}">
                                     @csrf
 
                                     <button class=" btn menu-link px-5" type="submit">Sign Out</button>
