@@ -32,7 +32,7 @@
         </div>
 
         <div >
-            <p class= "centertext ">Hospital Dashboard</p>
+            <p class= "centertext ">CLOUD CARE DASHBOARD</p>
             </divclass>
         </div>
     </div>

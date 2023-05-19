@@ -7,11 +7,10 @@
 }
 body{
     background-attachment: fixed;
-    background-image: url("bg.jpg");
+    background-image: url("938686_BlogImageRebrand_V3-A_071521-1024x683.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-
     width: 100%;
     height: auto;
 
@@ -26,7 +25,7 @@ body{
     font-size: 40px;
     font-family: 'Abril Fatface', cursive;
     color: #0e5688;
-    text-shadow: 0 0 3px #ffffff, 0 0 5px #cecece;
+
 
 }
 
