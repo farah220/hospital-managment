@@ -41,7 +41,7 @@ body{
 }
 
 .navbar a {
-    float: left;
+    float: right;
     font-size: 16px;
     color: white;
     text-align: center;
@@ -51,9 +51,9 @@ body{
 }
 
 .dropdown {
-    float: left;
+    float: right;
     overflow: hidden;
-
+margin-right: 10px;
 }
 
 .dropdown .dropbtn {
@@ -67,7 +67,7 @@ body{
 font-family: Arial;
 
     letter-spacing: 2px;
-    margin-left: 35px;
+    margin-right: 20px;
 
 
 }
@@ -86,6 +86,8 @@ font-family: Arial;
     z-index: 1;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+
+
 }
 
 .dropdown-content a {
