@@ -29,10 +29,11 @@
                 </div>
 
             </div>
+            <p style="text-align: center; margin-bottom: 10px;margin-top: 17px; margin-right:160px; letter-spacing: 2px; font-family:Arial; word-spacing: 6px;  font-weight: bold; font-size: 20px; color: white">CLOUD CARE DASHBOARD</p>
         </div>
 
         <div >
-            <p class= "centertext ">CLOUD CARE DASHBOARD</p>
+
             </divclass>
         </div>
     </div>

@@ -15,9 +15,8 @@
         <!--begin::Content-->
         <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
             <!--begin::Logo-->
-            <a href="" class="mb-12" >
-                                <img alt="Logo" style="width:80px;height: 80px;" src="{{ asset('dashboard-assets/WhatsApp Image 2023-05-20 at 12.53.37 AM.jpeg') }}" class="h-45px" />
-            </a>
+
+                                <img alt="Logo"  src="{{ asset('dashboard-assets/media/logos/cloud.ico') }}" class="h-45px"  />
         @yield('content')
         <!--end::Logo-->
         </div>

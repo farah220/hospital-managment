@@ -10,7 +10,7 @@
         <!--begin::Heading-->
             <div class="text-center mb-10">
                 <!--begin::Title-->
-                <h1 class="text-dark mb-3">Sign In To Hospital Pharmacist</h1>
+                <h1 class="text-dark mb-3">Sign In To Cloud Care Pharmacist</h1>
                 <!--end::Title-->
 
             </div>
