@@ -38,6 +38,7 @@ body{
     border-bottom-left-radius: 12px;
 
 
+
 }
 
 .navbar a {
@@ -85,7 +86,9 @@ font-family: Arial;
     box-shadow: 0px 8px 16px 0px rgb(202, 199, 199);
     z-index: 1;
     border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
+
 
 
 }
@@ -104,6 +107,8 @@ font-family: Arial;
 .dropdown-content a:hover {
     background-color: #b3aeae;
     border-radius: 10px;
+
+
 
 }
 
