@@ -260,7 +260,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
-                                <span class="menu-title">Laboratorists</span>
+                                <span class="menu-title">Laboratorians</span>
                                 <span class="menu-arrow"></span>
                             </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -269,7 +269,7 @@
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                <span class="menu-title">Laboratorists List</span>
+                                <span class="menu-title">Laboratorians List</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -277,7 +277,7 @@
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                <span class="menu-title">New Laboratorist</span>
+                                <span class="menu-title">New Laboratorian</span>
                             </a>
                         </div>
 

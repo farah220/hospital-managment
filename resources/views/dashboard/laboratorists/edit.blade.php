@@ -9,7 +9,7 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                     <!-- begin :: Title -->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Laboratorists</h1>
+                    <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Laboratorian</h1>
                     <!-- end   :: Title -->
 
                     <!-- begin :: Separator -->
@@ -38,7 +38,7 @@
                 <!-- begin :: Card header -->
 
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="fw-bolder text-dark"> Edit Laboratorists</h3>
+                        <h3 class="fw-bolder text-dark"> Edit Laboratorian</h3>
                     </div>
                     <!-- end   :: Card header -->
 

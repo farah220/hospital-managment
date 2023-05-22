@@ -106,6 +106,23 @@
                             </div>
 
                             <!-- end   :: Column -->
+                            <!-- begin :: Column -->
+                            <div class="col-md-6 fv-row">
+
+                                <label class="fs-5 fw-bold mb-2">Diagnosis</label>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name_inp" name="xray_report"
+                                           placeholder="example" value="{{ old('diagnosis') }}">
+                                    <label for="name_inp">Enter Diagnosis</label>
+
+                                </div>
+                                @error('diagnosis')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+                            </div>
+                            <!-- end   :: Column -->
+
 
                         </div>
                         <!-- end   :: Row -->

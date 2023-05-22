@@ -3,6 +3,8 @@
 
 <head>
     <title>Login</title>
+
+    <link rel="icon" type="image/png" href="{{asset('dashboard-assets/media/logos/output-onlinepngtools.png')}}" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('dashboard-assets/css/style.css')}}">

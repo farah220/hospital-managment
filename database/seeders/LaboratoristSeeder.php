@@ -18,10 +18,10 @@ class LaboratoristSeeder extends Seeder
     public function run()
     {
         Laboratorist::create([
-            'name' => 'ezz',
-            'phone' => '01156658134',
-            'email' => 'ezz-laboratorist@example.com',
-            'password' => '01156658134',
+            'name' => 'lab.Ahmed Saad',
+            'phone' => '01125756807',
+            'email' => 'ahmed@cloudcare.com',
+            'password' => '01125756807',
 
         ]);
     }

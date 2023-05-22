@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->decimal('price');
             $table->string('password');
+
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('description');

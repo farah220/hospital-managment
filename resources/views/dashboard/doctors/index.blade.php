@@ -54,7 +54,7 @@
                     <th class="min-w-125px">Name</th>
                     <th class="min-w-125px">Email</th>
                     <th class="min-w-125px">phone</th>
-                    <th class="min-w-125px">Description</th>
+{{--                    <th class="min-w-125px">Description</th>--}}
                     <th class="min-w-125px">Price</th>
                     <th class="min-w-125px">Image</th>
                     <th class="min-w-125px">Department</th>
@@ -80,9 +80,9 @@
                         <td>
                             {{$doctor->phone}}
                         </td>
-                        <td>
-                            {{$doctor->description}}
-                        </td>
+{{--                        <td>--}}
+{{--                            {{$doctor->description}}--}}
+{{--                        </td>--}}
                         <td>
                             {{$doctor->price}}
                         </td>

@@ -89,32 +89,21 @@
 
                             </div>
                             <!-- end   :: Column -->
-                            <div class="col-md-6 fv-row">
-
-                                <label class="fs-5 fw-bold mb-2">Phone</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $doctor->phone }}" />
-
-                                </div>
-                                @error('phone')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-
-
-                            </div>
+<br>
                             <div class="col-md-6 fv-row">
 
                                 <label class="fs-5 fw-bold mb-2">Description</label>
-                                <div class="form-floating">
-                                    <input type="text" disabled class="form-control"  value="{{ $doctor->description }}" />
 
-                                </div>
+                               <span class="form-control"> {{ $doctor->description }}</span>
+
+
                                 @error('description')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
 
                             </div>
+                            <br>
                             <div class="col-md-6 fv-row">
 
                                 <label class="fs-5 fw-bold mb-2">Department</label>
