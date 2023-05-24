@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="col-md-6 fv-row">
-                            <br>
+
                             <label class="fs-5 fw-bold mb-2">Price</label>
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="price"

@@ -23,6 +23,7 @@ class OnePrescriptionResource extends JsonResource
             'checks_total' =>$this->checks_total,
             'date' => date("m-d-Y" , strtotime($this->created_at)),
             'total_price' => $this->total_price,
+            'diagnosis' => $this->diagnosis,
             'user'=> new UserResource($this->whenLoaded('user')),
 
         ];

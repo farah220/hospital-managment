@@ -17,11 +17,9 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
- 
             'image' =>getImagePath(imageName:$this->image,folder:'patients'),
             'email' => $this->email,
             'phone'=>$this->phone,
-
             'emergency_contact'=>$this->emergency_contact,
             'date'=>date("m-d-Y" , strtotime($this->created_at))
         ];

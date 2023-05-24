@@ -55,6 +55,7 @@ class PrescriptionController extends Controller
     {
        $prescription = new Prescription();
        $prescription->user_id = $request->input('user_id');
+       $prescription->diagnosis = $request->input('diagnosis');
        $prescription->doctor_id = auth()->user()->id;
        $prescription->total_price = 0;
        $prescription->save();
@@ -81,6 +82,7 @@ class PrescriptionController extends Controller
     public function update(Request $request, Prescription $prescription)
     {
        $user_id = $prescription->user_id = $request->input('user_id');
+       $diagnosis = $prescription->diagnosis = $request->input('diagnosis');
         $doctor_id = $prescription->doctor_id = auth()->user()->id;
         $prescription->total_price = 0;
         $checks = $request->input('checks');
@@ -100,7 +102,7 @@ class PrescriptionController extends Controller
         }
         }
         $total = $prescription->getItemsSum();
-        $prescription->update(['total_price'=>$total,'user_id'=>$user_id,'doctor_id'=>$doctor_id]);
+        $prescription->update(['total_price'=>$total,'user_id'=>$user_id,'doctor_id'=>$doctor_id,'diagnosis'=>$diagnosis]);
 
         return redirect(route('doctor-dashboard.prescriptions.index'))->with('success_message','The prescription has been updated successfully');
 
