@@ -16,4 +16,8 @@ class Laboratorist extends Authenticatable
     {
        return $this->attributes['password'] = Hash::make($value);
     }
+    public function admin()
+    {
+        return  $this->belongsTo(Admin::class,'created_by');
+    }
 }
