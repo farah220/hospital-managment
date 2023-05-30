@@ -13,4 +13,9 @@ class Department extends Model
     {
        return  $this->hasMany(Doctor::class);
     }
+    public function admin()
+    {
+       return  $this->belongsTo(Admin::class,'created_by');
+    }
+
 }

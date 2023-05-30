@@ -21,6 +21,10 @@ class Doctor extends Authenticatable
         return $this->hasMany(Prescription::class);
 
     }
+    public function admin()
+{
+    return  $this->belongsTo(Admin::class,'created_by');
+}
     protected $guarded = [];
 
     public function setPasswordAttribute($value)

@@ -43,6 +43,8 @@ class PatientController extends Controller
 
         $attributes['password'] = $attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'patients');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
 
 
         User::create($attributes);
@@ -62,6 +64,8 @@ class PatientController extends Controller
         ]);
         if ( request()->file('image') )
             $attributes['image'] = uploadImage($request->file('image'),'patients');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
 
         $patient->update($attributes);
 

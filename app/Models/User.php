@@ -39,7 +39,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Report::class);
     }
-
+    public function admin()
+    {
+        return  $this->belongsTo(Admin::class,'created_by');
+    }
     public function prescriptions()
     {
         return $this->hasMany(Prescription::class)->with('checks','medicines');

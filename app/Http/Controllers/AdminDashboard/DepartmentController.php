@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentController extends Controller
 {
@@ -39,6 +40,7 @@ class DepartmentController extends Controller
         ]);
 
         $attributes['image'] = uploadImage($request->file('image'),'departments');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         Department::create($attributes);
 
@@ -52,6 +54,7 @@ class DepartmentController extends Controller
             'name' => ['required'],
             'description' => ['required'],
         ]);
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         $department->update($attributes);
 

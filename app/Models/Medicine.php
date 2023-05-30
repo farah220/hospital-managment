@@ -14,4 +14,8 @@ class Medicine extends Model
        return $this->morphToMany(Prescription::class,'prescriptive')->withPivot('item_price');
 
     }
+    public function pharmacist()
+    {
+        return  $this->belongsTo(Pharmacist::class,'created_by');
+    }
 }
