@@ -40,6 +40,7 @@ class CheckController extends Controller
             'name' => ['required'],
             'price' => ['required'],
         ]);
+        $attributes['created_by'] = Auth::guard('laboratorists')->user()->id;
         Check::create($attributes);
 
 
@@ -55,7 +56,7 @@ class CheckController extends Controller
 
         ]);
 
-
+        $attributes['created_by'] = Auth::guard('laboratorists')->user()->id;
         $check->update($attributes);
 
         return redirect()->route('lab-dashboard.checks.index')->with('success_message', 'The check has been updated successfully');

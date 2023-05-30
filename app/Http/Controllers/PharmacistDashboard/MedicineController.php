@@ -37,7 +37,7 @@ class MedicineController extends Controller
             'name' => ['required'],
             'price' => ['required'],
         ]);
-
+        $attributes['created_by'] = Auth::guard('pharmacists')->user()->id;
         Medicine::create($attributes);
 
         return redirect()->route('pharm-dashboard.medicines.index')->with('success_message','The new medicine has been added successfully');
@@ -50,6 +50,7 @@ class MedicineController extends Controller
             'name' => ['required'],
             'price' => ['required'],
         ]);
+        $attributes['created_by'] = Auth::guard('pharmacists')->user()->id;
 
         $medicine->update($attributes);
 

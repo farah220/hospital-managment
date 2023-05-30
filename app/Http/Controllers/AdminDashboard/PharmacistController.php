@@ -43,6 +43,7 @@ class PharmacistController extends Controller
         $attributes['password'] = $attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'pharmacists');
 
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         Pharmacist::create($attributes);
 
@@ -58,6 +59,8 @@ class PharmacistController extends Controller
             'email' => ['required' , 'unique:pharmacists,email,' . $pharmacist->id ,'email'],
             'image' => [ 'nullable' ],
         ]);
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
 
         $pharmacist->update($attributes);
 

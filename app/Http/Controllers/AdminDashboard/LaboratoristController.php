@@ -41,6 +41,8 @@ class LaboratoristController extends Controller
         ]);
         $attributes['password']=$attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
 
 
         Laboratorist::create($attributes);
@@ -61,6 +63,7 @@ class LaboratoristController extends Controller
         ]);
         if ( request()->file('image') )
             $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         $laboratorist->update($attributes);
 

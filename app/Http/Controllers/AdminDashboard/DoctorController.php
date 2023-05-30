@@ -48,6 +48,8 @@ class DoctorController extends Controller
 
         $attributes['password'] = $attributes['phone'];
         $attributes['image'] = uploadImage($request->file('image'),'doctors');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
 
         Doctor::create($attributes);
 
@@ -67,6 +69,8 @@ class DoctorController extends Controller
         ]);
         if ( request()->file('image') )
             $attributes['image'] = uploadImage($request->file('image'),'doctors');
+        $attributes['created_by'] = Auth::guard('admins')->user()->id;
+
         $doctor->update($attributes);
 
         return redirect()->route('dashboard.doctors.index')->with('success_message','The doctor has been updated successfully');
