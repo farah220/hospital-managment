@@ -55,10 +55,12 @@ class PharmacistController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required'],
-//            'phone' => ['required' , 'unique:$pharmacists,phone,'. $pharmacist->id],
             'email' => ['required' , 'unique:pharmacists,email,' . $pharmacist->id ,'email'],
             'image' => [ 'nullable' ],
         ]);
+        $attributes['password'] = $attributes['phone'];
+        if ( request()->file('image') )
+            $attributes['image'] = uploadImage($request->file('image'),'pharmacists');
         $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
 

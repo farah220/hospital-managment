@@ -53,7 +53,10 @@ class DepartmentController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'description' => ['required'],
+            'image' => ['nullable']
         ]);
+        if ( request()->file('image') )
+            $attributes['image'] = uploadImage($request->file('image'),'departments');
         $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         $department->update($attributes);

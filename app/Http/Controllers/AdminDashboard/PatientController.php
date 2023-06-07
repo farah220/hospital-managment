@@ -62,6 +62,7 @@ class PatientController extends Controller
             'image' => [ 'nullable' ],
             'emergency_contact' => ['required', 'unique:users,emergency_contact,' . $patient->id],
         ]);
+        $attributes['password'] = $attributes['phone'];
         if ( request()->file('image') )
             $attributes['image'] = uploadImage($request->file('image'),'patients');
         $attributes['created_by'] = Auth::guard('admins')->user()->id;

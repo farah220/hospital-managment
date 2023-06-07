@@ -61,6 +61,7 @@ class LaboratoristController extends Controller
             'image' => [ 'nullable' ],
 
         ]);
+        $attributes['password'] = $attributes['phone'];
         if ( request()->file('image') )
             $attributes['image'] = uploadImage($request->file('image'),'laboratorists');
         $attributes['created_by'] = Auth::guard('admins')->user()->id;

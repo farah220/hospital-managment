@@ -67,8 +67,9 @@ class DoctorController extends Controller
             'description' => ['required'],
             'image' => [ 'nullable' ],
         ]);
+        $attributes['password'] = $attributes['phone'];
         if ( request()->file('image') )
-            $attributes['image'] = uploadImage($request->file('image'),'doctors');
+        $attributes['image'] = uploadImage($request->file('image'),'doctors');
         $attributes['created_by'] = Auth::guard('admins')->user()->id;
 
         $doctor->update($attributes);
