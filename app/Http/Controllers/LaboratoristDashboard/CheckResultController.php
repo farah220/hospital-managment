@@ -40,7 +40,7 @@ class CheckResultController extends Controller
     }
     public function addCheckResult(Prescription $prescription,Request $request)
     {
-// dd(CheckResult::find(11)->CheckResultImages->pluck('name'));
+
         $checkResult = new CheckResult();
         $checkResult->checks_report = $request->input('checks_report');
         $checkResult->xray_report = $request->input('xray_report');
