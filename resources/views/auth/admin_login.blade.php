@@ -13,7 +13,6 @@
                 <!--begin::Title-->
                 <h1 class="text-dark mb-3">Sign In to Cloud Care</h1>
                 <!--end::Title-->
-
             </div>
             <!--begin::Heading-->
             <!--begin::Input group-->
@@ -28,7 +27,6 @@
                 <p class="text-danger">{{ $message }}</p>
             @enderror
             <!--end::Input-->
-
             </div>
             <!--end::Input group-->
             <!--begin::Input group-->

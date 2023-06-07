@@ -21,10 +21,8 @@
             </div>
 
         </div>
-
     </div>
     <!-- end   :: Subheader -->
-
 
     @if( count($errors) > 0 )
         @include('pharmacist-dashboard.partials.error_alert')
@@ -65,11 +63,10 @@
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
 
-
                         </div>
 
                         <div class="col-md-6 fv-row">
-                            <br>
+
                             <label class="fs-5 fw-bold mb-2">Price</label>
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="price"
@@ -82,11 +79,8 @@
 
 
                         </div>
-
                         <!-- end   :: Column -->
-
                         <!-- end   :: Inputs wrapper -->
-
                         <!-- begin :: Form footer -->
                         <div class="form-footer p-8 text-end">
 
@@ -97,7 +91,6 @@
 
                             </button>
                             <!-- end   :: Submit btn -->
-
                         </div>
                         <!-- end   :: Form footer -->
                     </div>

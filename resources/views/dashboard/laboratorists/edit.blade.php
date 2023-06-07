@@ -36,20 +36,15 @@
                 @csrf
                 @method('PUT')
                 <!-- begin :: Card header -->
-
                     <div class="card-header d-flex align-items-center">
                         <h3 class="fw-bolder text-dark"> Edit Laboratorian</h3>
                     </div>
                     <!-- end   :: Card header -->
-
                     <!-- begin :: Inputs wrapper -->
                     <div class="px-8 py-4">
-
-
                         <!-- begin :: Row -->
                         <div class="row mb-8">
                             <div class="col-md-12 text-center mb-5 fv-row">
-
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/laboratorists/' . $laboratorist['image']) }}')">
                                     <!--begin::Image preview wrapper-->
@@ -74,7 +69,6 @@
 
                                 </div>
                                 <!--end::Image input-->
-
 
                                 @error('image')
                                 <p class="text-danger">{{ $message }}</p>

@@ -16,15 +16,12 @@
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
                     <!-- end   :: Separator -->
 
-
-
                 </div>
 
             </div>
 
         </div>
         <!-- end   :: Subheader -->
-
         <div class="card">
             <!-- begin :: Card body -->
             <div class="card-body p-0">
@@ -36,15 +33,11 @@
                         <h3 class="fw-bolder text-dark"> Laboratorian Details</h3>
                     </div>
                     <!-- end   :: Card header -->
-
                     <!-- begin :: Inputs wrapper -->
                     <div class="px-8 py-4">
-
-
                         <!-- begin :: Row -->
                         <div class="row mb-8">
                             <div class="col-md-12 text-center mb-5 fv-row">
-
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty" style="background-image: url('{{ asset('storage/images/laboratorists/' . $laboratorist['image']) }}')">
                                     <!--begin::Image preview wrapper-->
