@@ -56,6 +56,8 @@ class PharmacistController extends Controller
         $attributes = $request->validate([
             'name' => ['required'],
             'email' => ['required' , 'unique:pharmacists,email,' . $pharmacist->id ,'email'],
+            'phone' => ['required' , 'unique:pharmacists,phone,' . $pharmacist->id ],
+
             'image' => [ 'nullable' ],
         ]);
         $attributes['password'] = $attributes['phone'];
