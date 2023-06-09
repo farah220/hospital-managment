@@ -118,7 +118,7 @@
 
                                 <label class="fs-5 fw-bold mb-2">Diagnosis</label>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name_inp" name="xray_report"
+                                    <input type="text" class="form-control" id="name_inp" name="diagnosis"
                                            placeholder="example" value="{{ old('diagnosis') ?? $prescription->diagnosis }}">
 
                                 </div>
